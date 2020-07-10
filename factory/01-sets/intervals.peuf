@@ -1,0 +1,13 @@
+french-real::
+    [...] = [ ... ]
+    ]...[ = ] ... [
+
+american-real::
+    O     = P
+    [...] = [ ... ]
+    ]...[ = ( ... )
+
+discrete::
+    prefix = Z
+    [...]  = \llbracket ... \rrbracket
+    ]...[  = \rrbracket ... \llbracket

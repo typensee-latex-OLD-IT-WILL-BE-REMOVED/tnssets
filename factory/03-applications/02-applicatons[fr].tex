@@ -1,0 +1,82 @@
+\documentclass[12pt,a4paper]{article}
+
+\makeatletter
+    \input{../config/header[fr].sty}
+
+    \usepackage{02-applicatons}
+\makeatother
+
+    
+\begin{document}
+
+%\section{Applications}
+
+\subsection{Application totale, partielle, injective, surjective et/ou bijective} \label{section:application}
+
+Voici des symboles qui, bien que très techniques, facilitent la rédaction de documents à propos des applications totales ou partielles
+\footnote{
+	$a: E \to F$ est une application totale si $\forall x \in E$, $\exists\,! y \in F$ tel que $y = a(x)$. 
+	Plus généralement, $f: E \to F$ est une application partielle si $\forall x \in E$, $\exists_{\leq 1} y \in F$ tel que $y = f(x)$, autrement dit soit $f(x)$ existe dans $F$, soit $f$ n'est pas définie en $x$.
+}
+\emph{(on parle aussi d'applications, sans qualificatif, et de fonctions)}.
+
+
+% ---------------------- %
+
+
+\newparaexample{Applications totales}
+
+\begin{latexex-flat}
+$f: A \to B$ est une application totale, c'est à dire définie sur $A$ tout entier.
+
+$i: C \onetoone D$ est une application totale injective.
+
+$s: E \onto F$ est une application totale surjective.
+
+$b: G \biject H$ est une application totale bijective.
+\end{latexex-flat}
+
+
+% ---------------------- %
+
+
+\newparaexample{Applications partielles}
+
+\begin{latexex-flat}
+$f: A \pto B$ est une application partielle, c'est à dire définie sur
+un sous-ensemble de $A$.
+
+$i: C \ponetoone D$ est une application partielle injective.
+
+$s: E \ponto F$ est une application partielle surjective.
+
+$b: G \pbiject H$ est une application partielle bijective.
+\end{latexex-flat}
+
+
+% ---------------------- %
+
+
+\subsubsection{Fiches techniques}
+
+\paragraph{Application totale, partielle, injective, surjective et/ou bijective}
+
+\vspace{-.75em}
+\begin{multicols}{2}
+    \IDmacro*{to}{0}
+    
+    \IDmacro*{onetoone}{0}
+    
+    \IDmacro*{onto}{0}
+    
+    \IDmacro*{biject}{0}
+    
+    \IDmacro*{pto}{0}
+    
+    \IDmacro*{ponetoone}{0}
+    
+    \IDmacro*{ponto}{0}
+    
+    \IDmacro*{pbiject}{0}
+\end{multicols}
+\end{document}

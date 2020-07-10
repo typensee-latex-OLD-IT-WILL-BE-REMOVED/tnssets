@@ -1,0 +1,258 @@
+\documentclass[12pt,a4paper]{article}
+
+\makeatletter
+	\input{../config/header[fr].sty}
+	\usepackage{01-general-sets}
+
+	\usepackage{02-intervals}
+\makeatother
+
+
+\begin{document}
+
+%\section{Ensembles et applications}
+
+\subsection{Intervalles}
+
+\subsubsection{Intervalles réels - Notation française (?\,)}
+
+\newparaexample{}
+
+Dans cet exemple, la syntaxe fait référence à 
+\whyprefix{O}{pened} et \whyprefix{C}{losed}
+pour
+\inenglish{ouvert et fermé}.
+Nous verrons que \prefix{CC} et \prefix{OO} sont contractés en \prefix{C} et \prefix{O}.
+Notez au passage que la macro utilisée résout un problème d'espacement vis à vis du signe $=$ .
+
+\begin{latexex}
+$I = ]a ; b] = \intervalOC{a}{b}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{}
+
+Les crochets s'étendent verticalement automatiquement. Pour empêcher cela, il suffit d'utiliser la version étoilée de la macro.
+Dans ce cas, les crochets restent tout de même un peu plus grands que des crochets utilisés directement. Voici un exemple.
+
+\begin{latexex}
+$\displaystyle
+ \intervalC{ \frac{1}{2} }{ 1^{2^{3}} }
+ =
+ [ \frac{1}{2} ; 1^{2^{3}} ]
+ =
+ \intervalC*{ \frac{1}{2} }{ 1^{2^{3}} }$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Fiches techniques}
+
+\paragraph{Intervalles réels -- Notation française (?\,)}
+
+Pour toutes les macros ci-dessous, la version non étoilée produit des délimiteurs qui s'étirent si besoin verticalement, tandis que la version étoilée ne le fait pas.
+
+
+\separation
+
+
+% Docs for french real intervals - START
+
+\IDmacro*{intervalCO}{2}
+
+\IDmacro*{intervalCO*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalCO{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalCO{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{intervalC}{2}
+
+\IDmacro*{intervalC*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalC{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalC{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{intervalO}{2}
+
+\IDmacro*{intervalO*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalO{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalO{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{intervalOC}{2}
+
+\IDmacro*{intervalOC*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalOC{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalOC{a}{b}$.
+
+% Docs for french real intervals - END
+
+
+% ---------------------- %
+
+
+\subsubsection{Intervalles réels -- Notation américaine}
+
+\newparaexample*{}
+
+Dans cet exemple, la syntaxe fait référence à \whyprefix{P}{arenthèse}. Cette notation est utilisée États Unis.
+
+\begin{latexex}
+$\intervalPC{a}{b} = \intervalOC{a}{b}$
+et
+$\intervalP{a}{b} = \intervalO{a}{b}$.
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Fiches techniques}
+
+\paragraph{Intervalles réels -- Notation américaine}
+
+Pour toutes les macros ci-dessous, la version non étoilée produit des délimiteurs qui s'étirent si besoin verticalement, tandis que la version étoilée ne le fait pas.
+
+
+\separation
+
+
+% Docs for american real intervals - START
+
+\IDmacro*{intervalCP}{2}
+
+\IDmacro*{intervalCP*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalCP{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalCP{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{intervalP}{2}
+
+\IDmacro*{intervalP*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalP{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalP{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{intervalPC}{2}
+
+\IDmacro*{intervalPC*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalPC{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalPC{a}{b}$.
+
+% Docs for american real intervals - END
+
+
+% ---------------------- %
+
+
+\subsubsection{Intervalles discrets d'entiers}
+
+\newparaexample*{}
+
+Dans l'exemple, la syntaxe fait référence à $\ZZ$ l'ensemble des entiers relatifs.
+
+\begin{latexex}
+ $\ZintervalC{-1}{4} =
+  \{ -1 ; 0 ; 1 ; 2 ; 3 ; 4 \}$
+ 
+ $\ZintervalC{-1}{4} =
+  \ZintervalO{-2}{5}$.
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Fiches techniques}
+
+\paragraph{Intervalles discrets d'entiers}
+
+Pour toutes les macros ci-dessous, la version non étoilée produit des délimiteurs qui s'étirent si besoin verticalement, tandis que la version étoilée ne le fait pas.
+
+
+\separation
+
+
+% Docs for discrete intervals - START
+
+\IDmacro*{ZintervalCO}{2}
+
+\IDmacro*{ZintervalCO*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\ZintervalCO{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\ZintervalCO{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{ZintervalC}{2}
+
+\IDmacro*{ZintervalC*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\ZintervalC{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\ZintervalC{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{ZintervalO}{2}
+
+\IDmacro*{ZintervalO*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\ZintervalO{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\ZintervalO{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{ZintervalOC}{2}
+
+\IDmacro*{ZintervalOC*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\ZintervalOC{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\ZintervalOC{a}{b}$.
+
+% Docs for discrete intervals - END
+
+\end{document}

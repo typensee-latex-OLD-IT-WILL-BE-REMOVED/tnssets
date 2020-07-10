@@ -1,0 +1,57 @@
+\documentclass[12pt,a4paper]{article}
+
+\makeatletter
+    \input{../config/header[fr].sty}
+
+    \usepackage{01-image-n-co}
+\makeatother
+
+    
+\begin{document}
+
+\section{Applications}
+
+\subsection{Cardinal, image et compagnie}
+
+\newparaexample{Cardinal}
+
+\begin{latexex}
+$\card* E = \card E$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Image et compagnie}
+
+Ci-dessous la macro est proposé par \verb+amsmath+ qui est importé par \verb+tnssets+.
+
+\begin{latexex}
+$\ker f$ , $\dom f$ ,
+$\im f$ ou $\codom f$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Fiches techniques}
+
+\paragraph{Cardinal, image et compagnie}
+
+\IDmacro*{card}{0}
+
+\IDmacro*{card*}{0}
+
+
+\separation
+
+
+\IDmacro*{dom}{0}
+
+\IDmacro*{codom}{0}
+
+\IDmacro*{im}{0}
+
+\end{document}

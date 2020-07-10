@@ -1,0 +1,185 @@
+% == PACKAGES USED == %
+
+\RequirePackage{amssymb}
+\RequirePackage{dsfont}
+\RequirePackage{mathrsfs}
+\RequirePackage{yhmath}
+
+\RequirePackage{graphicx}
+\RequirePackage{xstring}
+
+\RequirePackage{tnscom}
+
+
+
+% == DEFINITIONS == %
+
+% General sets
+
+\newcommand\setgene{\@ifstar{\@setgene@star}{\@setgene@no@star}}
+
+
+\newcommand\@setgene@no@star[1]{%
+	\tns@generic@interval@ext{\{}{#1}{}{}{\}}%
+}
+
+\newcommand\@setgene@star[1]{%
+	\tns@generic@interval@semi@ext{\{}{#1}{}{}{\}}%
+}
+
+
+% Probabilistic sets
+
+\newcommand\setproba{\@ifstar{\@setproba@star}{\@setproba@no@star}}
+
+\newcommand\@setproba@no@star[1]{
+    \IfSubStr{,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,}{,#1,}{
+        \mathcal{#1}
+    }{%
+        \PackageError{tnssets}{Command << setproba >> only accepts single upper case letters}%
+    }
+}
+
+\newcommand\@setproba@star[2]{%
+    \@setproba@no@star{#1}_{#2}
+}
+
+
+% Geometric sets
+%
+% With ''mathscr'', we only have the upper case letters.
+% So we use the following trick for lower case letters.
+%
+% Source:
+%    * page 68 de ''The Comprehensive LATEX Symbol List''
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\newcommand\setgeo{\@ifstar{\@setgeo@star}{\@setgeo@no@star}}
+
+\newcommand\@setgeo@no@star[1]{
+    \IfSubStr{,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,}{,#1,}{
+        \mathscr{#1}
+    }{%
+        \IfSubStr{,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,}{,#1,}{
+            \mathpzc{#1}
+        }{%
+            \PackageError{tnssets}{Command << fieldset >> only accepts single h, k or upper case letter}%
+        }
+    }
+}
+
+\newcommand\@setgeo@star[2]{%
+    \@setgeo@no@star{#1}_{#2}
+}
+
+
+% Sets for algebra
+%
+% Only the upper case letters and also h and k.
+%
+% With ''\mathbb'', there are only the upper case letters.
+
+\newcommand\setalge{\@ifstar{\@setalge@star}{\@setalge@no@star}}
+
+\newcommand\@setalge@no@star[1]{
+    \IfSubStr{,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,h,k,}{,#1,}{
+        \mathds{#1}
+    }{%
+        \PackageError{tnssets}{Command << fieldset >> only accepts letters h or k alone, and upper case letters}%
+    }
+}
+
+\newcommand\@setalge@star[2]{%
+    \@setalge@no@star{#1}_{#2}
+}
+
+
+% Tools for classical sets
+
+\newcommand\setpos{\textbf{\tiny+}}
+\newcommand\setneg{\vphantom{\setpos}-}
+\newcommand\set@star{\text{*}}
+
+\newcommand\setspecial{\@ifstar{\@setspecial@star}{\@setspecial@no@star}}
+
+\newcommand\@setspecial@no@star[2]{
+    \IfEqCase{#2}{
+        {s}{ #1^{\set@star} }
+        {n}{ #1^{\phantom{\set@star}}_{\setneg} }
+        {p}{ #1^{\phantom{\set@star}}_{\setpos} }
+        {sn}{ #1^{\set@star}_{\setneg} }
+        {sp}{ #1^{\set@star}_{\setpos} }
+    }
+}
+
+\newcommand\@setspecial@star[2]{
+    \IfEqCase{#2}{
+        {s}{ #1_{\neq 0} }
+        {n}{ #1_{\le 0} }
+        {p}{ #1_{\ge 0} }
+        {sn}{ #1_{< 0} }
+        {sp}{ #1_{> 0} }
+    }
+}
+
+
+% The empty set
+
+\newcommand\nullset{%
+    \ensuremath{\text{\scalebox{1.2}{$\varnothing$}}}%
+}
+
+
+% List of classical sets - START
+
+\newcommand\NN{\ensuremath{\setalge{N}}}
+\newcommand\NNs{\ensuremath{\setspecial{\NN}{s}}}
+
+\newcommand\PP{\ensuremath{\setalge{P}}}
+
+\newcommand\ZZ{\ensuremath{\setalge{Z}}}
+\newcommand\ZZp{\ensuremath{\setspecial{\ZZ}{p}}}
+\newcommand\ZZn{\ensuremath{\setspecial{\ZZ}{n}}}
+\newcommand\ZZs{\ensuremath{\setspecial{\ZZ}{s}}}
+\newcommand\ZZsn{\ensuremath{\setspecial{\ZZ}{sn}}}
+\newcommand\ZZsp{\ensuremath{\setspecial{\ZZ}{sp}}}
+
+\newcommand\DD{\ensuremath{\setalge{D}}}
+\newcommand\DDp{\ensuremath{\setspecial{\DD}{p}}}
+\newcommand\DDn{\ensuremath{\setspecial{\DD}{n}}}
+\newcommand\DDs{\ensuremath{\setspecial{\DD}{s}}}
+\newcommand\DDsn{\ensuremath{\setspecial{\DD}{sn}}}
+\newcommand\DDsp{\ensuremath{\setspecial{\DD}{sp}}}
+
+\newcommand\QQ{\ensuremath{\setalge{Q}}}
+\newcommand\QQp{\ensuremath{\setspecial{\QQ}{p}}}
+\newcommand\QQn{\ensuremath{\setspecial{\QQ}{n}}}
+\newcommand\QQs{\ensuremath{\setspecial{\QQ}{s}}}
+\newcommand\QQsn{\ensuremath{\setspecial{\QQ}{sn}}}
+\newcommand\QQsp{\ensuremath{\setspecial{\QQ}{sp}}}
+
+\newcommand\RR{\ensuremath{\setalge{R}}}
+\newcommand\RRp{\ensuremath{\setspecial{\RR}{p}}}
+\newcommand\RRn{\ensuremath{\setspecial{\RR}{n}}}
+\newcommand\RRs{\ensuremath{\setspecial{\RR}{s}}}
+\newcommand\RRsn{\ensuremath{\setspecial{\RR}{sn}}}
+\newcommand\RRsp{\ensuremath{\setspecial{\RR}{sp}}}
+
+\newcommand\CC{\ensuremath{\setalge{C}}}
+\newcommand\CCs{\ensuremath{\setspecial{\CC}{s}}}
+
+\newcommand\HH{\ensuremath{\setalge{H}}}
+\newcommand\HHs{\ensuremath{\setspecial{\HH}{s}}}
+
+\newcommand\OO{\ensuremath{\setalge{O}}}
+\newcommand\OOs{\ensuremath{\setspecial{\OO}{s}}}
+
+\newcommand\FF{\ensuremath{\setalge{F}}}
+\newcommand\FFp{\ensuremath{\setspecial{\FF}{p}}}
+\newcommand\FFn{\ensuremath{\setspecial{\FF}{n}}}
+\newcommand\FFs{\ensuremath{\setspecial{\FF}{s}}}
+\newcommand\FFsn{\ensuremath{\setspecial{\FF}{sn}}}
+\newcommand\FFsp{\ensuremath{\setspecial{\FF}{sp}}}
+
+% List of classical sets - END

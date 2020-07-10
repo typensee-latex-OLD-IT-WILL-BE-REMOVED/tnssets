@@ -1,0 +1,13 @@
+% == PACKAGES USED == %
+
+\RequirePackage{amssymb}
+\RequirePackage{relsize}
+
+
+% == DEFINITIONS == %
+
+\newcommand\@display@this[3]{\mathop{\raisebox{#1}{\scalebox{#2}{$#3$}}}\limits}
+
+\newcommand\dcup{\@display@this{.05em}{0.8}{\bigcup}}
+\newcommand\dsqcup{\@display@this{.05em}{0.8}{\bigsqcup}}
+\newcommand\dcap{\@display@this{.05em}{0.8}{\bigcap}}

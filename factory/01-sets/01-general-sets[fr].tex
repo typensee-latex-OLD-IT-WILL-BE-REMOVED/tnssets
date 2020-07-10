@@ -1,0 +1,392 @@
+\documentclass[12pt,a4paper]{article}
+
+\makeatletter
+	\input{../config/header[fr].sty}
+
+	\usepackage{01-general-sets}
+\makeatother
+
+
+\usepackage{relsize}
+
+
+
+\begin{document}
+
+\section{Ensembles et applications}
+
+\subsection{Différents types d'ensembles}
+
+\subsubsection{Ensembles versus accolades}
+
+\newparaexample{}
+
+\begin{latexex}
+$\setgene{1 ; 3 ; 5}$ .
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{}
+
+Dans l'exemple suivant on utilise l'option \prefix{sb} pour \whyprefix{s}{mall} \whyprefix{b}{races} soit \inenglish{petites accolades}.
+
+\begin{latexex}
+$\setgene {\dfrac{1}{3} ; \dfrac{5}{7} ; 
+           \dfrac{9}{11}}$
+
+$\setgene*{\dfrac{1}{3} ; \dfrac{5}{7} ;
+           \dfrac{9}{11}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Fiches techniques}
+
+\paragraph{Ensembles versus accolades}
+
+\IDmacro{setgene}{1}{1}
+
+\IDoption{} la valeur par défaut est \verb+b+.  Voici les différentes valeurs possibles.
+\begin{enumerate}
+	\item \verb+b+ : on utilise des accolades extensibles.
+
+	\item \verb+sb+ : on utilise des accolades non extensibles.
+\end{enumerate}
+
+\IDarg{} la définition de l'ensemble.
+
+\IDarg{} la définition de l'ensemble.
+
+
+% ---------------------- %
+
+
+\subsubsection{Ensembles pour la géométrie} \label{set-geo}
+
+\newparaexample{}
+
+\begin{latexex}
+$\setgeo{C}$ ,
+$\setgeo{D}$ ou
+$\setgeo{d}$
+\end{latexex}
+
+\begin{remark}
+	Pour le moment, il n'est pas possible de taper \verb+$\setgeo{ABC}$+ avec plusieurs lettres.
+\end{remark}
+
+
+% ---------------------- %
+
+
+\newparaexample{Avec des indices}
+
+\begin{latexex}
+$\setgeo*{C}{1}$ ou
+$\setgeo*{C}{2}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Fiches techniques}
+
+\paragraph{Ensembles pour la géométrie}
+
+\IDmacro*{setgeo}{1}
+
+\IDarg{} un seul caractère \ascii{} indiquant un ensemble géométrique.
+
+
+\separation
+
+
+\IDmacro*{setgeo*}{2}
+
+\IDarg{1} un seul caractère \ascii{} indiquant $\setgeo{U}$ dans le nom $\setgeo*{U}{d}$ d'un ensemble géométrique.
+
+\IDarg{2} un texte donnant $d$ dans le nom $\setgeo*{U}{d}$ d'un ensemble géométrique.
+
+
+% ---------------------- %
+
+
+\subsubsection{Ensembles probabilistes}
+
+\newparaexample{}
+
+\begin{latexex}
+$\setproba{E}$ ou
+$\setproba{G}$
+\end{latexex}
+
+\begin{remark}
+	Pour le moment, il n'est pas possible de taper \verb+$\setproba{ABC}$+ avec plusieurs lettres.
+\end{remark}
+
+
+% ---------------------- %
+
+
+\newparaexample{Avec des indices}
+
+\begin{latexex}
+$\setproba*{E}{1}$ ou
+$\setproba*{E}{2}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Fiches techniques}
+
+\paragraph{Ensembles probabilistes}
+
+\IDmacro*{setproba}{1}
+
+\IDarg{} un seul caractère \ascii{} majuscule indiquant un ensemble probabiliste.
+
+
+\separation
+
+
+\IDmacro*{setproba*}{2}
+
+\IDarg{1} un seul caractère \ascii{} majuscule indiquant $\setproba{U}$ dans le nom $\setproba*{U}{d}$ d'un ensemble probabiliste.
+
+\IDarg{2} un texte donnant $d$ dans le nom $\setproba*{U}{d}$ d'un ensemble probabiliste.
+
+
+% ---------------------- %
+
+
+\subsubsection{Ensembles pour l'algèbre générale}
+
+\newparaexample{}
+
+\begin{latexex}
+$\setalge{A}$ ,
+$\setalge{K}$ ,
+$\setalge{h}$ ou
+$\setalge{k}$
+\end{latexex}
+
+\begin{remark}
+	Pour le moment, il n'est pas possible de taper \verb+$\setalge{ABC}$+ avec plusieurs lettres.
+\end{remark}
+
+
+% ---------------------- %
+
+
+\newparaexample{Avec des indices}
+
+\begin{latexex}
+$\setalge*{k}{1}$ ou $\setalge*{k}{2}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Fiches techniques}
+
+\paragraph{Ensembles pour l'algèbre générale}
+
+\IDmacro*{setalge}{1}
+
+\IDarg{} soit l'une des lettres  \texttt{h} et \texttt{k}, soit un seul caractère \ascii{} majuscule indiquant un ensemble de type anneau ou corps.
+
+
+\separation
+
+
+\IDmacro*{setalge*}{2}
+
+\IDarg{1} un seul caractère \ascii{} indiquant $\setalge{U}$ dans le nom $\setalge*{U}{d}$ d'un ensemble de type anneau ou corps.
+
+\IDarg{2} un texte donnant $d$ dans le nom $\setalge*{U}{d}$ d'un ensemble de type anneau ou corps.
+
+
+% ---------------------- %
+
+
+\subsection{Ensembles classiques en mathématiques et en informatique théorique} 
+
+\subsubsection{La liste complète}
+
+Dans l'exemple suivant,
+$\PP$ désigne l'ensemble des nombres premiers,
+$\HH$ celui des quaternions,
+$\OO$ celui des octonions et
+$\FF$ un ensemble de nombres flottants \emph{(notation à préciser suivant le contexte)}.
+
+\begin{latexex}
+$\nullset$
+
+$\NN$ , $\ZZ$ , $\PP$
+
+$\DD$ , $\QQ$ , $\RR$ , $\CC$
+
+$\HH$ , $\OO$
+
+$\FF$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Ensembles classiques suffixés}
+
+L'ensemble $\RR$ nous permet de voir tous les cas possibles. 
+
+\begin{latexex}
+$\RRn$ , $\RRp$ , $\RRs$ 
+
+$\RRsn$ , $\RRsp$
+\end{latexex}
+
+
+Nous avons utilisé les suffixes \prefix{n} pour \whyprefix{n}{égatif}, \prefix{p} pour \whyprefix{p}{ositif} et \prefix{s} pour \whyprefix{s}{tar} soit \inenglish{étoile}. Il y a aussi les suffixes composites \prefix{sn} et \prefix{sp}.
+
+\medskip
+
+Notez qu'il est interdit d'utiliser \verb+$\CCn$+ pour $\setspecial{\CC}{n}$ car l'ensemble $\CC$ ne possède pas de structure ordonnée standard. Jetez un oeil à la section suivante pour apprendre à taper $\setspecial{\CC}{n}$ si vous en avez besoin. L'interdiction est ici purement sémantique !
+
+\medskip
+
+\begin{remark}
+	La table \ref{table:suffixes-sets} \vpageref{table:suffixes-sets} montre les associations autorisées entre ensembles classiques et suffixes.
+\end{remark}
+
+% == Table of suffixes - START == %
+
+\begin{table}[h]
+    \caption{Suffixes}
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c|c}
+              & \verb+n+ & \verb+p+ & \verb+s+ & \verb+sn+ & \verb+sp+ \\
+            \hline \makecell{\macro{NN}} &          &          & $\times$ &          &          \\
+            \hline \makecell{\macro{PP}} &          &          &          &          &          \\
+            \hline \makecell{\macro{ZZ}\\\macro{DD}\\\macro{QQ}\\\macro{RR}} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\
+            \hline \makecell{\macro{CC}\\\macro{HH}\\\macro{OO}} &          &          & $\times$ &          &          \\
+            \hline \makecell{\macro{FF}} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\
+        \end{tabular}
+    \end{center}
+    \label{table:suffixes-sets}
+\end{table}
+
+% == Table of suffixes - END == %
+
+
+% ---------------------- %
+
+
+\subsubsection{Fiches techniques}
+
+\paragraph{Ensembles classiques}
+
+% == Docs for classical sets - START == %
+\foreach \k in {NN, NNs}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {PP}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {ZZ, ZZn, ZZp, ZZs, ZZsn, ZZsp}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {DD, DDn, DDp, DDs, DDsn, DDsp}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {QQ, QQn, QQp, QQs, QQsn, QQsp}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {RR, RRn, RRp, RRs, RRsn, RRsp}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {CC, CCs}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {HH, HHs}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {OO, OOs}{
+
+    \IDmacro*{\k}{0}
+}
+                % == Docs for classical sets - END == %
+
+
+% ---------------------- %
+
+
+\subsection{Des suffixes à la carte}
+
+\paragraph{Exemple d'utilisation}
+
+Dans cet exemple, il faut savoir que le 2\ieme{} argument ne peut prendre que les valeurs \prefix{n}, \prefix{p}, \prefix{s}, \prefix{sn} ou \prefix{sp}.
+
+\begin{latexex}
+$\setspecial{\CC}{n}$ ,
+$\setspecial{\HH}{sp}$ ou
+$\setspecial*{\setproba{P}}{n}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Fiches techniques}
+
+\paragraph{Ensembles -- Des suffixes à la carte}
+
+\IDmacro*{setspecial}{2}
+
+\IDmacro*{setspecial*}{2}
+
+\IDarg{1} l'ensemble à "suffixer".
+
+\IDarg{2} l'un des suffixes \prefix{n}, \prefix{p}, \prefix{s}, \prefix{sn} ou \prefix{sp}.
+
+\end{document}

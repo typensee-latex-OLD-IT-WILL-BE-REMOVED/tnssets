@@ -1,0 +1,8 @@
+==========
+2020-07-???
+==========
+
+**First version version::``0.0.0-beta`` of ¨tnssets:** this package is for general theory of sets and applications.
+
+warning::
+    This package uses the package `tnscom`.

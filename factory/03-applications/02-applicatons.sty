@@ -1,0 +1,24 @@
+% == PACKAGES USED == %
+
+\RequirePackage{stackengine}
+\RequirePackage{mathtools}
+\RequirePackage{amssymb}
+
+
+% == DEFINITIONS == %
+
+\newcommand\@rel@scale[3]{\mathrel{\scalebox{#1}[#2]{$#3$}}}
+
+\newcommand\onetoone{\@rel@scale{1.1}{1.3}{\rightarrowtail}}
+\newcommand\onto{\@rel@scale{1.1}{1.3}{\twoheadrightarrow}}
+\newcommand\biject{\mathrel{\mathrlap{\onetoone}\mkern0.9mu\onto}}
+ 
+    
+\newcommand\@partaial@deco[3]{\stackMath\mathrel{\stackinset{c}{#1}{c}{#2}{\scalebox{1}[0.4]{$\vert$}}{#3}}}
+
+\newcommand\pto{\@partaial@deco{-0.1ex}{0.15ex}{\to}}
+\newcommand\ponetoone{\@partaial@deco{0ex}{0ex}{\onetoone}}
+\newcommand\ponto{\@partaial@deco{-0.3ex}{0ex}{\onto}}
+\newcommand\pbiject{\@partaial@deco{-0.25ex}{0ex}{\biject}}
+
+

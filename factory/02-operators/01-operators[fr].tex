@@ -1,0 +1,79 @@
+\documentclass[12pt,a4paper]{article}
+
+\makeatletter
+	\input{../config/header[fr].sty}
+
+	\usepackage{01-operators}
+\makeatother
+
+
+	
+\begin{document}
+
+\section{Unions et intersections}
+
+\newparaexample{Des unions}
+
+Ci-dessous est utilisée la macro \macro{bigcup} proposée par le package \verb+amssymb+.
+
+\begin{latexex}
+$A \cup B$
+
+$\dcup_{k=1}^{n} A_k$
+
+$\bigcup_{k=1}^{n} B_k$
+
+$\displaystyle \bigcup_{k=1}^{n} C_k$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Des unions disjointes}
+
+Ci-dessous sont utilisées les macros \macro{sqcup} et \macro{bigsqcup} proposée par le package \verb+amssymb+.
+
+\begin{latexex}
+$A\sqcup B$
+
+$\dsqcup_{k=1}^{n} A_k$
+
+$\bigsqcup_{k=1}^{n} B_k$
+
+$\displaystyle \bigsqcup_{k=1}^{n} C_k$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Des intersections}
+
+Ci-dessous est utilisée la macro \macro{bigcap} proposée par le package \verb+amssymb+.
+
+\begin{latexex}
+$A \cap B$
+
+$\dcap_{k=1}^{n} A_k$
+
+$\bigcap_{k=1}^{n} B_k$
+
+$\displaystyle \bigcap_{k=1}^{n} C_k$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsection{Fiches techniques}
+
+\paragraph{Unions et intersections}
+
+\IDmacro*{dcap}{0}
+
+\IDmacro*{dcup}{0}
+
+\IDmacro*{dsqcup}{0}
+
+\end{document}

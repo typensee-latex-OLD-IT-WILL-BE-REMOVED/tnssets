@@ -1,0 +1,1005 @@
+%\documentclass[12pt,a4paper]{scrartcl}
+\documentclass[12pt,a4paper]{article}
+
+\makeatletter % Technical doc - START
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ucs}
+
+\usepackage[french]{babel,varioref}
+
+\usepackage[top=2cm, bottom=2cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage{enumitem}
+
+\usepackage{multicol}
+
+\usepackage{makecell}
+
+\usepackage{color}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\usepackage{amsthm}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{listingsutf8}
+
+\usepackage{ifplatform}
+
+\usepackage{ifthen}
+
+\usepackage{cbdevtool}
+
+
+
+% MISC
+
+\newtcblisting{latexex}{%
+	sharp corners,%
+	left=1mm, right=1mm,%
+	bottom=1mm, top=1mm,%
+	colupper=red!75!blue,%
+	listing side text
+}
+
+\newtcblisting{latexex-flat}{%
+	sharp corners,%
+	left=1mm, right=1mm,%
+	bottom=1mm, top=1mm,%
+	colupper=red!75!blue,%
+}
+
+\newtcblisting{latexex-alone}{%
+	sharp corners,%
+	left=1mm, right=1mm,%
+	bottom=1mm, top=1mm,%
+	colupper=red!75!blue,%
+	listing only
+}
+
+
+\newcommand\env[1]{\texttt{#1}}
+\newcommand\macro[1]{\env{\textbackslash{}#1}}
+
+
+
+\setlength{\parindent}{0cm}
+\setlist{noitemsep}
+
+\theoremstyle{definition}
+\newtheorem*{remark}{Remarque}
+
+\usepackage[raggedright]{titlesec}
+
+\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{0.5em}
+
+
+\newcommand\separation{
+	\medskip
+	\hfill\rule{0.5\textwidth}{0.75pt}\hfill
+	\medskip
+}
+
+
+\newcommand\extraspace{
+	\vspace{0.25em}
+}
+
+
+\newcommand\whyprefix[2]{%
+	\textbf{\prefix{#1}}-#2%
+}
+
+\newcommand\mwhyprefix[2]{%
+	\texttt{#1 = #1-#2}%
+}
+
+\newcommand\prefix[1]{%
+	\texttt{#1}%
+}
+
+
+\newcommand\inenglish{\@ifstar{\@inenglish@star}{\@inenglish@no@star}}
+
+\newcommand\@inenglish@star[1]{%
+	\emph{\og #1 \fg}%
+}
+
+\newcommand\@inenglish@no@star[1]{%
+	\@inenglish@star{#1} en anglais%
+}
+
+
+\newcommand\ascii{\texttt{ASCII}}
+
+
+% Example
+\newcounter{paraexample}[subsubsection]
+
+\newcommand\@newexample@abstract[2]{%
+	\paragraph{%
+		#1%
+		\if\relax\detokenize{#2}\relax\else {} -- #2\fi%
+	}%
+}
+
+
+
+\newcommand\newparaexample{\@ifstar{\@newparaexample@star}{\@newparaexample@no@star}}
+
+\newcommand\@newparaexample@no@star[1]{%
+	\refstepcounter{paraexample}%
+	\@newexample@abstract{Exemple \theparaexample}{#1}%
+}
+
+\newcommand\@newparaexample@star[1]{%
+	\@newexample@abstract{Exemple}{#1}%
+}
+
+
+% Change log
+\newcommand\topic{\@ifstar{\@topic@star}{\@topic@no@star}}
+
+\newcommand\@topic@no@star[1]{%
+	\textbf{\textsc{#1}.}%
+}
+
+\newcommand\@topic@star[1]{%
+	\textbf{\textsc{#1} :}%
+}
+
+\makeatother % Technical doc - END
+
+
+\usepackage{ tnssets }
+
+
+\begin{document}
+
+\renewcommand\labelitemi{\raisebox{0.125em}{\tiny\textbullet}}
+\renewcommand{\labelitemii}{---}
+
+\title{   %
+	Le package \texttt{ tnssets }\\%
+	{\footnotesize Code source disponible sur \url{ https://github.com/typensee-latex/tnstools.git }.}\\%
+{\footnotesize Version \texttt{0.0.0-beta} développée et testée sur \macosxname{}.}%
+}
+\author{Christophe BAL}
+\date{2020-07-10}{{{{
+
+\maketitle
+
+
+\vspace{2em}
+
+\hrule
+
+\tableofcontents
+
+\vspace{1.5em}
+
+\hrule
+
+\newpage
+
+\section{Introduction}
+
+Le package \verb+tnssets+ propose des macros utiles pour la rédaction de théorie basique et générale des ensembles et des applications.
+
+\begin{remark}
+	Ce package s'appuie sur \verb+tnscom+ disponible sur \url{https://github.com/typensee-latex/tnscom.git}.
+\end{remark}
+\section{Ensembles et applications}
+
+\subsection{Différents types d'ensembles}
+
+\subsubsection{Ensembles versus accolades}
+
+\newparaexample{}
+
+\begin{latexex}
+$\setgene{1 ; 3 ; 5}$ .
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{}
+
+Dans l'exemple suivant on utilise l'option \prefix{sb} pour \whyprefix{s}{mall} \whyprefix{b}{races} soit \inenglish{petites accolades}.
+
+\begin{latexex}
+$\setgene {\dfrac{1}{3} ; \dfrac{5}{7} ; 
+           \dfrac{9}{11}}$
+
+$\setgene*{\dfrac{1}{3} ; \dfrac{5}{7} ;
+           \dfrac{9}{11}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Ensembles pour la géométrie} \label{set-geo}
+
+\newparaexample{}
+
+\begin{latexex}
+$\setgeo{C}$ ,
+$\setgeo{D}$ ou
+$\setgeo{d}$
+\end{latexex}
+
+\begin{remark}
+	Pour le moment, il n'est pas possible de taper \verb+$\setgeo{ABC}$+ avec plusieurs lettres.
+\end{remark}
+
+
+% ---------------------- %
+
+
+\newparaexample{Avec des indices}
+
+\begin{latexex}
+$\setgeo*{C}{1}$ ou
+$\setgeo*{C}{2}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Ensembles probabilistes}
+
+\newparaexample{}
+
+\begin{latexex}
+$\setproba{E}$ ou
+$\setproba{G}$
+\end{latexex}
+
+\begin{remark}
+	Pour le moment, il n'est pas possible de taper \verb+$\setproba{ABC}$+ avec plusieurs lettres.
+\end{remark}
+
+
+% ---------------------- %
+
+
+\newparaexample{Avec des indices}
+
+\begin{latexex}
+$\setproba*{E}{1}$ ou
+$\setproba*{E}{2}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Ensembles pour l'algèbre générale}
+
+\newparaexample{}
+
+\begin{latexex}
+$\setalge{A}$ ,
+$\setalge{K}$ ,
+$\setalge{h}$ ou
+$\setalge{k}$
+\end{latexex}
+
+\begin{remark}
+	Pour le moment, il n'est pas possible de taper \verb+$\setalge{ABC}$+ avec plusieurs lettres.
+\end{remark}
+
+
+% ---------------------- %
+
+
+\newparaexample{Avec des indices}
+
+\begin{latexex}
+$\setalge*{k}{1}$ ou $\setalge*{k}{2}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsection{Ensembles classiques en mathématiques et en informatique théorique} 
+
+\subsubsection{La liste complète}
+
+Dans l'exemple suivant,
+$\PP$ désigne l'ensemble des nombres premiers,
+$\HH$ celui des quaternions,
+$\OO$ celui des octonions et
+$\FF$ un ensemble de nombres flottants \emph{(notation à préciser suivant le contexte)}.
+
+\begin{latexex}
+$\nullset$
+
+$\NN$ , $\ZZ$ , $\PP$
+
+$\DD$ , $\QQ$ , $\RR$ , $\CC$
+
+$\HH$ , $\OO$
+
+$\FF$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Ensembles classiques suffixés}
+
+L'ensemble $\RR$ nous permet de voir tous les cas possibles. 
+
+\begin{latexex}
+$\RRn$ , $\RRp$ , $\RRs$ 
+
+$\RRsn$ , $\RRsp$
+\end{latexex}
+
+
+Nous avons utilisé les suffixes \prefix{n} pour \whyprefix{n}{égatif}, \prefix{p} pour \whyprefix{p}{ositif} et \prefix{s} pour \whyprefix{s}{tar} soit \inenglish{étoile}. Il y a aussi les suffixes composites \prefix{sn} et \prefix{sp}.
+
+\medskip
+
+Notez qu'il est interdit d'utiliser \verb+$\CCn$+ pour $\setspecial{\CC}{n}$ car l'ensemble $\CC$ ne possède pas de structure ordonnée standard. Jetez un oeil à la section suivante pour apprendre à taper $\setspecial{\CC}{n}$ si vous en avez besoin. L'interdiction est ici purement sémantique !
+
+\medskip
+
+\begin{remark}
+	La table \ref{table:suffixes-sets} \vpageref{table:suffixes-sets} montre les associations autorisées entre ensembles classiques et suffixes.
+\end{remark}
+
+% == Table of suffixes - START == %
+
+\begin{table}[h]
+    \caption{Suffixes}
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c|c}
+              & \verb+n+ & \verb+p+ & \verb+s+ & \verb+sn+ & \verb+sp+ \\
+            \hline \makecell{\macro{NN}} &          &          & $\times$ &          &          \\
+            \hline \makecell{\macro{PP}} &          &          &          &          &          \\
+            \hline \makecell{\macro{ZZ}\\\macro{DD}\\\macro{QQ}\\\macro{RR}} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\
+            \hline \makecell{\macro{CC}\\\macro{HH}\\\macro{OO}} &          &          & $\times$ &          &          \\
+            \hline \makecell{\macro{FF}} & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\
+        \end{tabular}
+    \end{center}
+    \label{table:suffixes-sets}
+\end{table}
+
+% == Table of suffixes - END == %
+
+
+% ---------------------- %
+
+
+\subsection{Des suffixes à la carte}
+
+\paragraph{Exemple d'utilisation}
+
+Dans cet exemple, il faut savoir que le 2\ieme{} argument ne peut prendre que les valeurs \prefix{n}, \prefix{p}, \prefix{s}, \prefix{sn} ou \prefix{sp}.
+
+\begin{latexex}
+$\setspecial{\CC}{n}$ ,
+$\setspecial{\HH}{sp}$ ou
+$\setspecial*{\setproba{P}}{n}$
+\end{latexex}
+
+
+% ---------------------- %
+%\section{Ensembles et applications}
+
+\subsection{Intervalles}
+
+\subsubsection{Intervalles réels - Notation française (?\,)}
+
+\newparaexample{}
+
+Dans cet exemple, la syntaxe fait référence à 
+\whyprefix{O}{pened} et \whyprefix{C}{losed}
+pour
+\inenglish{ouvert et fermé}.
+Nous verrons que \prefix{CC} et \prefix{OO} sont contractés en \prefix{C} et \prefix{O}.
+Notez au passage que la macro utilisée résout un problème d'espacement vis à vis du signe $=$ .
+
+\begin{latexex}
+$I = ]a ; b] = \intervalOC{a}{b}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{}
+
+Les crochets s'étendent verticalement automatiquement. Pour empêcher cela, il suffit d'utiliser la version étoilée de la macro.
+Dans ce cas, les crochets restent tout de même un peu plus grands que des crochets utilisés directement. Voici un exemple.
+
+\begin{latexex}
+$\displaystyle
+ \intervalC{ \frac{1}{2} }{ 1^{2^{3}} }
+ =
+ [ \frac{1}{2} ; 1^{2^{3}} ]
+ =
+ \intervalC*{ \frac{1}{2} }{ 1^{2^{3}} }$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Intervalles réels -- Notation américaine}
+
+\newparaexample*{}
+
+Dans cet exemple, la syntaxe fait référence à \whyprefix{P}{arenthèse}. Cette notation est utilisée États Unis.
+
+\begin{latexex}
+$\intervalPC{a}{b} = \intervalOC{a}{b}$
+et
+$\intervalP{a}{b} = \intervalO{a}{b}$.
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Intervalles discrets d'entiers}
+
+\newparaexample*{}
+
+Dans l'exemple, la syntaxe fait référence à $\ZZ$ l'ensemble des entiers relatifs.
+
+\begin{latexex}
+ $\ZintervalC{-1}{4} =
+  \{ -1 ; 0 ; 1 ; 2 ; 3 ; 4 \}$
+ 
+ $\ZintervalC{-1}{4} =
+  \ZintervalO{-2}{5}$.
+\end{latexex}
+
+
+% ---------------------- %
+\section{Unions et intersections}
+
+\newparaexample{Des unions}
+
+Ci-dessous est utilisée la macro \macro{bigcup} proposée par le package \verb+amssymb+.
+
+\begin{latexex}
+$A \cup B$
+
+$\dcup_{k=1}^{n} A_k$
+
+$\bigcup_{k=1}^{n} B_k$
+
+$\displaystyle \bigcup_{k=1}^{n} C_k$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Des unions disjointes}
+
+Ci-dessous sont utilisées les macros \macro{sqcup} et \macro{bigsqcup} proposée par le package \verb+amssymb+.
+
+\begin{latexex}
+$A\sqcup B$
+
+$\dsqcup_{k=1}^{n} A_k$
+
+$\bigsqcup_{k=1}^{n} B_k$
+
+$\displaystyle \bigsqcup_{k=1}^{n} C_k$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Des intersections}
+
+Ci-dessous est utilisée la macro \macro{bigcap} proposée par le package \verb+amssymb+.
+
+\begin{latexex}
+$A \cap B$
+
+$\dcap_{k=1}^{n} A_k$
+
+$\bigcap_{k=1}^{n} B_k$
+
+$\displaystyle \bigcap_{k=1}^{n} C_k$
+\end{latexex}
+
+
+% ---------------------- %
+\section{Applications}
+
+\subsection{Cardinal, image et compagnie}
+
+\newparaexample{Cardinal}
+
+\begin{latexex}
+$\card* E = \card E$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Image et compagnie}
+
+Ci-dessous la macro est proposé par \verb+amsmath+ qui est importé par \verb+tnssets+.
+
+\begin{latexex}
+$\ker f$ , $\dom f$ ,
+$\im f$ ou $\codom f$
+\end{latexex}
+
+
+% ---------------------- %
+%\section{Applications}
+
+\subsection{Application totale, partielle, injective, surjective et/ou bijective} \label{section:application}
+
+Voici des symboles qui, bien que très techniques, facilitent la rédaction de documents à propos des applications totales ou partielles
+\footnote{
+	$a: E \to F$ est une application totale si $\forall x \in E$, $\exists\,! y \in F$ tel que $y = a(x)$. 
+	Plus généralement, $f: E \to F$ est une application partielle si $\forall x \in E$, $\exists_{\leq 1} y \in F$ tel que $y = f(x)$, autrement dit soit $f(x)$ existe dans $F$, soit $f$ n'est pas définie en $x$.
+}
+\emph{(on parle aussi d'applications, sans qualificatif, et de fonctions)}.
+
+
+% ---------------------- %
+
+
+\newparaexample{Applications totales}
+
+\begin{latexex-flat}
+$f: A \to B$ est une application totale, c'est à dire définie sur $A$ tout entier.
+
+$i: C \onetoone D$ est une application totale injective.
+
+$s: E \onto F$ est une application totale surjective.
+
+$b: G \biject H$ est une application totale bijective.
+\end{latexex-flat}
+
+
+% ---------------------- %
+
+
+\newparaexample{Applications partielles}
+
+\begin{latexex-flat}
+$f: A \pto B$ est une application partielle, c'est à dire définie sur
+un sous-ensemble de $A$.
+
+$i: C \ponetoone D$ est une application partielle injective.
+
+$s: E \ponto F$ est une application partielle surjective.
+
+$b: G \pbiject H$ est une application partielle bijective.
+\end{latexex-flat}
+
+
+% ---------------------- %
+\newpage
+
+\section{Historique}
+
+Nous ne donnons ici qu'un très bref historique récent
+\footnote{
+	On ne va pas au-delà de un an depuis la dernière version.
+}
+de \verb+tnssets+ à destination de l'utilisateur principalement.
+Tous les changements sont disponibles uniquement en anglais dans le dossier \verb+change-log+ : voir le code source de \verb+tnssets+ sur \verb+github+.
+
+\begin{description}
+% Changes shown - START
+
+    \medskip
+    \item[2020-07-10] Première version \verb+0.0.0-beta+.
+% ------------------------ %
+
+% Changes shown - END 
+\end{description}
+
+
+\newpage
+\section{Toutes les fiches techniques} \label{techincal-ids}
+
+
+\subsection{Ensembles et applications}
+
+\subsubsection{Ensembles versus accolades}
+
+\IDmacro{setgene}{1}{1}
+
+\IDoption{} la valeur par défaut est \verb+b+.  Voici les différentes valeurs possibles.
+\begin{enumerate}
+	\item \verb+b+ : on utilise des accolades extensibles.
+
+	\item \verb+sb+ : on utilise des accolades non extensibles.
+\end{enumerate}
+
+\IDarg{} la définition de l'ensemble.
+
+\IDarg{} la définition de l'ensemble.
+
+
+% ---------------------- %
+
+
+
+\subsubsection{Ensembles pour la géométrie}
+
+\IDmacro*{setgeo}{1}
+
+\IDarg{} un seul caractère \ascii{} indiquant un ensemble géométrique.
+
+
+\separation
+
+
+\IDmacro*{setgeo*}{2}
+
+\IDarg{1} un seul caractère \ascii{} indiquant $\setgeo{U}$ dans le nom $\setgeo*{U}{d}$ d'un ensemble géométrique.
+
+\IDarg{2} un texte donnant $d$ dans le nom $\setgeo*{U}{d}$ d'un ensemble géométrique.
+
+
+% ---------------------- %
+
+
+
+\subsubsection{Ensembles probabilistes}
+
+\IDmacro*{setproba}{1}
+
+\IDarg{} un seul caractère \ascii{} majuscule indiquant un ensemble probabiliste.
+
+
+\separation
+
+
+\IDmacro*{setproba*}{2}
+
+\IDarg{1} un seul caractère \ascii{} majuscule indiquant $\setproba{U}$ dans le nom $\setproba*{U}{d}$ d'un ensemble probabiliste.
+
+\IDarg{2} un texte donnant $d$ dans le nom $\setproba*{U}{d}$ d'un ensemble probabiliste.
+
+
+% ---------------------- %
+
+
+
+\subsubsection{Ensembles pour l'algèbre générale}
+
+\IDmacro*{setalge}{1}
+
+\IDarg{} soit l'une des lettres  \texttt{h} et \texttt{k}, soit un seul caractère \ascii{} majuscule indiquant un ensemble de type anneau ou corps.
+
+
+\separation
+
+
+\IDmacro*{setalge*}{2}
+
+\IDarg{1} un seul caractère \ascii{} indiquant $\setalge{U}$ dans le nom $\setalge*{U}{d}$ d'un ensemble de type anneau ou corps.
+
+\IDarg{2} un texte donnant $d$ dans le nom $\setalge*{U}{d}$ d'un ensemble de type anneau ou corps.
+
+
+% ---------------------- %
+
+
+
+\subsubsection{Ensembles classiques}
+
+% == Docs for classical sets - START == %
+\foreach \k in {NN, NNs}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {PP}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {ZZ, ZZn, ZZp, ZZs, ZZsn, ZZsp}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {DD, DDn, DDp, DDs, DDsn, DDsp}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {QQ, QQn, QQp, QQs, QQsn, QQsp}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {RR, RRn, RRp, RRs, RRsn, RRsp}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {CC, CCs}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {HH, HHs}{
+
+    \IDmacro*{\k}{0}
+}
+                
+\separation
+
+\foreach \k in {OO, OOs}{
+
+    \IDmacro*{\k}{0}
+}
+                % == Docs for classical sets - END == %
+
+
+% ---------------------- %
+
+
+
+\subsubsection{Ensembles -- Des suffixes à la carte}
+
+\IDmacro*{setspecial}{2}
+
+\IDmacro*{setspecial*}{2}
+
+\IDarg{1} l'ensemble à "suffixer".
+
+\IDarg{2} l'un des suffixes \prefix{n}, \prefix{p}, \prefix{s}, \prefix{sn} ou \prefix{sp}.
+\subsubsection{Intervalles réels -- Notation française (?\,)}
+
+Pour toutes les macros ci-dessous, la version non étoilée produit des délimiteurs qui s'étirent si besoin verticalement, tandis que la version étoilée ne le fait pas.
+
+
+\separation
+
+
+% Docs for french real intervals - START
+
+\IDmacro*{intervalCO}{2}
+
+\IDmacro*{intervalCO*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalCO{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalCO{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{intervalC}{2}
+
+\IDmacro*{intervalC*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalC{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalC{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{intervalO}{2}
+
+\IDmacro*{intervalO*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalO{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalO{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{intervalOC}{2}
+
+\IDmacro*{intervalOC*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalOC{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalOC{a}{b}$.
+
+% Docs for french real intervals - END
+
+
+% ---------------------- %
+
+
+
+\subsubsection{Intervalles réels -- Notation américaine}
+
+Pour toutes les macros ci-dessous, la version non étoilée produit des délimiteurs qui s'étirent si besoin verticalement, tandis que la version étoilée ne le fait pas.
+
+
+\separation
+
+
+% Docs for american real intervals - START
+
+\IDmacro*{intervalCP}{2}
+
+\IDmacro*{intervalCP*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalCP{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalCP{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{intervalP}{2}
+
+\IDmacro*{intervalP*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalP{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalP{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{intervalPC}{2}
+
+\IDmacro*{intervalPC*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\intervalPC{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\intervalPC{a}{b}$.
+
+% Docs for american real intervals - END
+
+
+% ---------------------- %
+
+
+
+\subsubsection{Intervalles discrets d'entiers}
+
+Pour toutes les macros ci-dessous, la version non étoilée produit des délimiteurs qui s'étirent si besoin verticalement, tandis que la version étoilée ne le fait pas.
+
+
+\separation
+
+
+% Docs for discrete intervals - START
+
+\IDmacro*{ZintervalCO}{2}
+
+\IDmacro*{ZintervalCO*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\ZintervalCO{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\ZintervalCO{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{ZintervalC}{2}
+
+\IDmacro*{ZintervalC*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\ZintervalC{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\ZintervalC{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{ZintervalO}{2}
+
+\IDmacro*{ZintervalO*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\ZintervalO{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\ZintervalO{a}{b}$.
+
+
+\separation
+
+
+\IDmacro*{ZintervalOC}{2}
+
+\IDmacro*{ZintervalOC*}{2}
+
+\IDarg{1} borne inférieure $a$ de l'intervalle $\ZintervalOC{a}{b}$.
+
+\IDarg{2} borne supérieure $b$ de l'intervalle $\ZintervalOC{a}{b}$.
+
+% Docs for discrete intervals - END
+\subsection{Unions et intersections}
+
+\subsubsection{Unions et intersections}
+
+\IDmacro*{dcap}{0}
+
+\IDmacro*{dcup}{0}
+
+\IDmacro*{dsqcup}{0}
+\subsection{Applications}
+
+\subsubsection{Cardinal, image et compagnie}
+
+\IDmacro*{card}{0}
+
+\IDmacro*{card*}{0}
+
+
+\separation
+
+
+\IDmacro*{dom}{0}
+
+\IDmacro*{codom}{0}
+
+\IDmacro*{im}{0}
+\subsubsection{Application totale, partielle, injective, surjective et/ou bijective}
+
+\vspace{-.75em}
+\begin{multicols}{2}
+    \IDmacro*{to}{0}
+    
+    \IDmacro*{onetoone}{0}
+    
+    \IDmacro*{onto}{0}
+    
+    \IDmacro*{biject}{0}
+    
+    \IDmacro*{pto}{0}
+    
+    \IDmacro*{ponetoone}{0}
+    
+    \IDmacro*{ponto}{0}
+    
+    \IDmacro*{pbiject}{0}
+\end{multicols}
+
+
+\end{document}

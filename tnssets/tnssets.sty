@@ -1,0 +1,304 @@
+% ---------------------- %
+% -- IMPORTS REQUIRED -- %
+% ---------------------- %
+
+% A
+\RequirePackage{amssymb}
+% D
+\RequirePackage{dsfont}
+% M
+\RequirePackage{mathrsfs}
+\RequirePackage{mathtools}
+% R
+\RequirePackage{relsize}
+% S
+\RequirePackage{stackengine}
+\RequirePackage{stmaryrd}
+% T
+\RequirePackage{tnscom}
+% X
+\RequirePackage{xstring}
+% Y
+\RequirePackage{yhmath}
+
+
+% ------------------ %
+% -- GENERAL SETS -- %
+% ------------------ %
+
+% General sets
+
+\newcommand\setgene{\@ifstar{\@setgene@star}{\@setgene@no@star}}
+
+
+\newcommand\@setgene@no@star[1]{%
+	\tns@generic@interval@ext{\{}{#1}{}{}{\}}%
+}
+
+\newcommand\@setgene@star[1]{%
+	\tns@generic@interval@semi@ext{\{}{#1}{}{}{\}}%
+}
+
+
+% Probabilistic sets
+
+\newcommand\setproba{\@ifstar{\@setproba@star}{\@setproba@no@star}}
+
+\newcommand\@setproba@no@star[1]{
+    \IfSubStr{,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,}{,#1,}{
+        \mathcal{#1}
+    }{%
+        \PackageError{tnssets}{Command << setproba >> only accepts single upper case letters}%
+    }
+}
+
+\newcommand\@setproba@star[2]{%
+    \@setproba@no@star{#1}_{#2}
+}
+
+
+% Geometric sets
+%
+% With ''mathscr'', we only have the upper case letters.
+% So we use the following trick for lower case letters.
+%
+% Source:
+%    * page 68 de ''The Comprehensive LATEX Symbol List''
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\newcommand\setgeo{\@ifstar{\@setgeo@star}{\@setgeo@no@star}}
+
+\newcommand\@setgeo@no@star[1]{
+    \IfSubStr{,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,}{,#1,}{
+        \mathscr{#1}
+    }{%
+        \IfSubStr{,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,}{,#1,}{
+            \mathpzc{#1}
+        }{%
+            \PackageError{tnssets}{Command << fieldset >> only accepts single h, k or upper case letter}%
+        }
+    }
+}
+
+\newcommand\@setgeo@star[2]{%
+    \@setgeo@no@star{#1}_{#2}
+}
+
+
+% Sets for algebra
+%
+% Only the upper case letters and also h and k.
+%
+% With ''\mathbb'', there are only the upper case letters.
+
+\newcommand\setalge{\@ifstar{\@setalge@star}{\@setalge@no@star}}
+
+\newcommand\@setalge@no@star[1]{
+    \IfSubStr{,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,h,k,}{,#1,}{
+        \mathds{#1}
+    }{%
+        \PackageError{tnssets}{Command << fieldset >> only accepts letters h or k alone, and upper case letters}%
+    }
+}
+
+\newcommand\@setalge@star[2]{%
+    \@setalge@no@star{#1}_{#2}
+}
+
+
+% Tools for classical sets
+
+\newcommand\setpos{\textbf{\tiny+}}
+\newcommand\setneg{\vphantom{\setpos}-}
+\newcommand\set@star{\text{*}}
+
+\newcommand\setspecial{\@ifstar{\@setspecial@star}{\@setspecial@no@star}}
+
+\newcommand\@setspecial@no@star[2]{
+    \IfEqCase{#2}{
+        {s}{ #1^{\set@star} }
+        {n}{ #1^{\phantom{\set@star}}_{\setneg} }
+        {p}{ #1^{\phantom{\set@star}}_{\setpos} }
+        {sn}{ #1^{\set@star}_{\setneg} }
+        {sp}{ #1^{\set@star}_{\setpos} }
+    }
+}
+
+\newcommand\@setspecial@star[2]{
+    \IfEqCase{#2}{
+        {s}{ #1_{\neq 0} }
+        {n}{ #1_{\le 0} }
+        {p}{ #1_{\ge 0} }
+        {sn}{ #1_{< 0} }
+        {sp}{ #1_{> 0} }
+    }
+}
+
+
+% The empty set
+
+\newcommand\nullset{%
+    \ensuremath{\text{\scalebox{1.2}{$\varnothing$}}}%
+}
+
+
+% List of classical sets - START
+
+\newcommand\NN{\ensuremath{\setalge{N}}}
+\newcommand\NNs{\ensuremath{\setspecial{\NN}{s}}}
+
+\newcommand\PP{\ensuremath{\setalge{P}}}
+
+\newcommand\ZZ{\ensuremath{\setalge{Z}}}
+\newcommand\ZZp{\ensuremath{\setspecial{\ZZ}{p}}}
+\newcommand\ZZn{\ensuremath{\setspecial{\ZZ}{n}}}
+\newcommand\ZZs{\ensuremath{\setspecial{\ZZ}{s}}}
+\newcommand\ZZsn{\ensuremath{\setspecial{\ZZ}{sn}}}
+\newcommand\ZZsp{\ensuremath{\setspecial{\ZZ}{sp}}}
+
+\newcommand\DD{\ensuremath{\setalge{D}}}
+\newcommand\DDp{\ensuremath{\setspecial{\DD}{p}}}
+\newcommand\DDn{\ensuremath{\setspecial{\DD}{n}}}
+\newcommand\DDs{\ensuremath{\setspecial{\DD}{s}}}
+\newcommand\DDsn{\ensuremath{\setspecial{\DD}{sn}}}
+\newcommand\DDsp{\ensuremath{\setspecial{\DD}{sp}}}
+
+\newcommand\QQ{\ensuremath{\setalge{Q}}}
+\newcommand\QQp{\ensuremath{\setspecial{\QQ}{p}}}
+\newcommand\QQn{\ensuremath{\setspecial{\QQ}{n}}}
+\newcommand\QQs{\ensuremath{\setspecial{\QQ}{s}}}
+\newcommand\QQsn{\ensuremath{\setspecial{\QQ}{sn}}}
+\newcommand\QQsp{\ensuremath{\setspecial{\QQ}{sp}}}
+
+\newcommand\RR{\ensuremath{\setalge{R}}}
+\newcommand\RRp{\ensuremath{\setspecial{\RR}{p}}}
+\newcommand\RRn{\ensuremath{\setspecial{\RR}{n}}}
+\newcommand\RRs{\ensuremath{\setspecial{\RR}{s}}}
+\newcommand\RRsn{\ensuremath{\setspecial{\RR}{sn}}}
+\newcommand\RRsp{\ensuremath{\setspecial{\RR}{sp}}}
+
+\newcommand\CC{\ensuremath{\setalge{C}}}
+\newcommand\CCs{\ensuremath{\setspecial{\CC}{s}}}
+
+\newcommand\HH{\ensuremath{\setalge{H}}}
+\newcommand\HHs{\ensuremath{\setspecial{\HH}{s}}}
+
+\newcommand\OO{\ensuremath{\setalge{O}}}
+\newcommand\OOs{\ensuremath{\setspecial{\OO}{s}}}
+
+\newcommand\FF{\ensuremath{\setalge{F}}}
+\newcommand\FFp{\ensuremath{\setspecial{\FF}{p}}}
+\newcommand\FFn{\ensuremath{\setspecial{\FF}{n}}}
+\newcommand\FFs{\ensuremath{\setspecial{\FF}{s}}}
+\newcommand\FFsn{\ensuremath{\setspecial{\FF}{sn}}}
+\newcommand\FFsp{\ensuremath{\setspecial{\FF}{sp}}}
+
+% List of classical sets - END
+
+
+% --------------- %
+% -- INTERVALS -- %
+% --------------- %
+
+% Macros for intervals - START
+
+% Macros for french real intervals
+
+\newcommand\intervalCO{\@ifstar{\@intervalCO@star}{\@intervalCO@no@star}}
+\newcommand\@intervalCO@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{[}}}
+\newcommand\@intervalCO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{[}}}
+
+\newcommand\intervalC{\@ifstar{\@intervalC@star}{\@intervalC@no@star}}
+\newcommand\@intervalC@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\@intervalC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{]}}}
+
+\newcommand\intervalO{\@ifstar{\@intervalO@star}{\@intervalO@no@star}}
+\newcommand\@intervalO@no@star[2]{\ensuremath{\tns@generic@interval@ext{]}{#1}{\tnsmathsep}{#2}{[}}}
+\newcommand\@intervalO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{]}{#1}{\tnsmathsep}{#2}{[}}}
+
+\newcommand\intervalOC{\@ifstar{\@intervalOC@star}{\@intervalOC@no@star}}
+\newcommand\@intervalOC@no@star[2]{\ensuremath{\tns@generic@interval@ext{]}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\@intervalOC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{]}{#1}{\tnsmathsep}{#2}{]}}}
+
+% Macros for american real intervals
+
+\newcommand\intervalCP{\@ifstar{\@intervalCP@star}{\@intervalCP@no@star}}
+\newcommand\@intervalCP@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{)}}}
+\newcommand\@intervalCP@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{)}}}
+
+\newcommand\intervalP{\@ifstar{\@intervalP@star}{\@intervalP@no@star}}
+\newcommand\@intervalP@no@star[2]{\ensuremath{\tns@generic@interval@ext{(}{#1}{\tnsmathsep}{#2}{)}}}
+\newcommand\@intervalP@star[2]{\ensuremath{\tns@generic@interval@semi@ext{(}{#1}{\tnsmathsep}{#2}{)}}}
+
+\newcommand\intervalPC{\@ifstar{\@intervalPC@star}{\@intervalPC@no@star}}
+\newcommand\@intervalPC@no@star[2]{\ensuremath{\tns@generic@interval@ext{(}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\@intervalPC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{(}{#1}{\tnsmathsep}{#2}{]}}}
+
+% Macros for discrete intervals
+
+\newcommand\ZintervalCO{\@ifstar{\@ZintervalCO@star}{\@ZintervalCO@no@star}}
+\newcommand\@ZintervalCO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+\newcommand\@ZintervalCO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+
+\newcommand\ZintervalC{\@ifstar{\@ZintervalC@star}{\@ZintervalC@no@star}}
+\newcommand\@ZintervalC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+\newcommand\@ZintervalC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+
+\newcommand\ZintervalO{\@ifstar{\@ZintervalO@star}{\@ZintervalO@no@star}}
+\newcommand\@ZintervalO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+\newcommand\@ZintervalO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+
+\newcommand\ZintervalOC{\@ifstar{\@ZintervalOC@star}{\@ZintervalOC@no@star}}
+\newcommand\@ZintervalOC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+\newcommand\@ZintervalOC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+
+% Macros for intervals - END
+
+
+% --------------- %
+% -- OPERATORS -- %
+% --------------- %
+
+\newcommand\@display@this[3]{\mathop{\raisebox{#1}{\scalebox{#2}{$#3$}}}\limits}
+
+\newcommand\dcup{\@display@this{.05em}{0.8}{\bigcup}}
+\newcommand\dsqcup{\@display@this{.05em}{0.8}{\bigsqcup}}
+\newcommand\dcap{\@display@this{.05em}{0.8}{\bigcap}}
+
+
+% ---------------- %
+% -- IMAGE N CO -- %
+% ---------------- %
+
+\newcommand\card{\@ifstar{\@card@star}{\@card@no@star}}
+
+\DeclareMathOperator{\@card@no@star}{\operatorname{card}}
+
+\newcommand\@card@star{\#}
+
+
+\DeclareMathOperator{\im}{\operatorname{im}}
+
+
+\DeclareMathOperator{\dom}{\operatorname{dom}}
+\DeclareMathOperator{\codom}{\operatorname{codom}}
+
+
+% ----------------- %
+% -- APPLICATONS -- %
+% ----------------- %
+
+\newcommand\@rel@scale[3]{\mathrel{\scalebox{#1}[#2]{$#3$}}}
+
+\newcommand\onetoone{\@rel@scale{1.1}{1.3}{\rightarrowtail}}
+\newcommand\onto{\@rel@scale{1.1}{1.3}{\twoheadrightarrow}}
+\newcommand\biject{\mathrel{\mathrlap{\onetoone}\mkern0.9mu\onto}}
+ 
+    
+\newcommand\@partaial@deco[3]{\stackMath\mathrel{\stackinset{c}{#1}{c}{#2}{\scalebox{1}[0.4]{$\vert$}}{#3}}}
+
+\newcommand\pto{\@partaial@deco{-0.1ex}{0.15ex}{\to}}
+\newcommand\ponetoone{\@partaial@deco{0ex}{0ex}{\onetoone}}
+\newcommand\ponto{\@partaial@deco{-0.3ex}{0ex}{\onto}}
+\newcommand\pbiject{\@partaial@deco{-0.25ex}{0ex}{\biject}}
