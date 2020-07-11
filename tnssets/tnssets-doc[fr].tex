@@ -474,56 +474,72 @@ Dans l'exemple, la syntaxe fait référence à $\ZZ$ l'ensemble des entiers rela
 
 
 % ---------------------- %
-\section{Unions et intersections}
+\section{Unions et intersections en mode ligne}
 
-\newparaexample{Des unions}
+\LaTeX{} permet d'afficher sans souci $\cup_{k=1}^{n}$ mais ne propose pas $\dcup_{k=1}^{n}$.
+Les macros \macro{dcap}, \macro{dcup} et \macro{dsqcup} donnent accès à ce type de fonctionnalité pour $\cap$ , $\cup$ et $\sqcup$ respectivement.
+Voici des exemples d'utilisation.
 
-Ci-dessous est utilisée la macro \macro{bigcup} proposée par le package \verb+amssymb+.
+
+% ---------------------- %
+
+
+\newparaexample{Les symboles \og seuls \fg}
 
 \begin{latexex}
-$A \cup B$
+$A \dcap B = C \cap D$
 
-$\dcup_{k=1}^{n} A_k$
+$A \dcup B = C \cup D$
 
-$\bigcup_{k=1}^{n} B_k$
-
-$\displaystyle \bigcup_{k=1}^{n} C_k$
+$A \dsqcup B = C \sqcup D$
 \end{latexex}
 
 
 % ---------------------- %
 
 
-\newparaexample{Des unions disjointes}
-
-Ci-dessous sont utilisées les macros \macro{sqcup} et \macro{bigsqcup} proposée par le package \verb+amssymb+.
-
-\begin{latexex}
-$A\sqcup B$
-
-$\dsqcup_{k=1}^{n} A_k$
-
-$\bigsqcup_{k=1}^{n} B_k$
-
-$\displaystyle \bigsqcup_{k=1}^{n} C_k$
-\end{latexex}
-
-
-% ---------------------- %
-
-
-\newparaexample{Des intersections}
+\newparaexample{Des intersections indicées}
 
 Ci-dessous est utilisée la macro \macro{bigcap} proposée par le package \verb+amssymb+.
 
 \begin{latexex}
-$A \cap B$
+$\cap_{k=1}^{n}    A_k$ ,
+$\dcap_{k=1}^{n}   B_k$ ,
+$\bigcap_{k=1}^{n} C_k$ ,
+$\displaystyle%
+ \bigcap_{k=1}^{n} D_k$
+\end{latexex}
 
-$\dcap_{k=1}^{n} A_k$
 
-$\bigcap_{k=1}^{n} B_k$
+% ---------------------- %
 
-$\displaystyle \bigcap_{k=1}^{n} C_k$
+
+\newparaexample{Des unions indicées}
+
+Ci-dessous est utilisée la macro \macro{bigcup} proposée par le package \verb+amssymb+.
+
+\begin{latexex}
+$\cup_{k=1}^{n}    A_k$ ,
+$\dcup_{k=1}^{n}   B_k$ ,
+$\bigcup_{k=1}^{n} C_k$ ,
+$\displaystyle%
+ \bigcup_{k=1}^{n} D_k$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Des unions disjointes indicées}
+
+Ci-dessous sont utilisées les macros \macro{sqcup} et \macro{bigsqcup} proposée par le package \verb+amssymb+.
+
+\begin{latexex}
+$\sqcup_{k=1}^{n}    A_k$ ,
+$\dsqcup_{k=1}^{n}   B_k$ ,
+$\bigsqcup_{k=1}^{n} C_k$ ,
+$\displaystyle%
+ \bigsqcup_{k=1}^{n} D_k$
 \end{latexex}
 
 
@@ -954,7 +970,7 @@ Pour toutes les macros ci-dessous, la version non étoilée produit des délimit
 \IDarg{2} borne supérieure $b$ de l'intervalle $\ZintervalOC{a}{b}$.
 
 % Docs for discrete intervals - END
-\subsection{Unions et intersections}
+\subsection{Unions et intersections en mode ligne}
 
 \subsubsection{Unions et intersections}
 
