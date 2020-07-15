@@ -28,23 +28,23 @@
 
 % General sets
 
-\newcommand\setgene{\@ifstar{\@setgene@star}{\@setgene@no@star}}
+\newcommand\setgene{\@ifstar{\tnssets@set@gene@star}{\tnssets@set@gene@no@star}}
 
 
-\newcommand\@setgene@no@star[1]{%
+\newcommand\tnssets@set@gene@no@star[1]{%
     \tns@generic@interval@ext{\{}{#1}{}{}{\}}%
 }
 
-\newcommand\@setgene@star[1]{%
+\newcommand\tnssets@set@gene@star[1]{%
     \tns@generic@interval@semi@ext{\{}{#1}{}{}{\}}%
 }
 
 
 % Probabilistic sets
 
-\newcommand\setproba{\@ifstar{\@setproba@star}{\@setproba@no@star}}
+\newcommand\setproba{\@ifstar{\tnssets@set@proba@star}{\tnssets@set@proba@no@star}}
 
-\newcommand\@setproba@no@star[1]{
+\newcommand\tnssets@set@proba@no@star[1]{
     \IfSubStr{,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,}{,#1,}{
         \mathcal{#1}
     }{%
@@ -52,8 +52,8 @@
     }
 }
 
-\newcommand\@setproba@star[2]{%
-    \@setproba@no@star{#1}_{#2}
+\newcommand\tnssets@set@proba@star[2]{%
+    \tnssets@set@proba@no@star{#1}_{#2}
 }
 
 
@@ -67,9 +67,9 @@
 
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
-\newcommand\setgeo{\@ifstar{\@setgeo@star}{\@setgeo@no@star}}
+\newcommand\setgeo{\@ifstar{\tnssets@set@geo@star}{\tnssets@set@geo@no@star}}
 
-\newcommand\@setgeo@no@star[1]{
+\newcommand\tnssets@set@geo@no@star[1]{
     \IfSubStr{,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,}{,#1,}{
         \mathscr{#1}
     }{%
@@ -81,8 +81,8 @@
     }
 }
 
-\newcommand\@setgeo@star[2]{%
-    \@setgeo@no@star{#1}_{#2}
+\newcommand\tnssets@set@geo@star[2]{%
+    \tnssets@set@geo@no@star{#1}_{#2}
 }
 
 
@@ -92,9 +92,9 @@
 %
 % With ''\mathbb'', there are only the upper case letters.
 
-\newcommand\setalge{\@ifstar{\@setalge@star}{\@setalge@no@star}}
+\newcommand\setalge{\@ifstar{\tnssets@set@alge@star}{\tnssets@set@alge@no@star}}
 
-\newcommand\@setalge@no@star[1]{
+\newcommand\tnssets@set@alge@no@star[1]{
     \IfSubStr{,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,h,k,}{,#1,}{
         \mathds{#1}
     }{%
@@ -102,8 +102,8 @@
     }
 }
 
-\newcommand\@setalge@star[2]{%
-    \@setalge@no@star{#1}_{#2}
+\newcommand\tnssets@set@alge@star[2]{%
+    \tnssets@set@alge@no@star{#1}_{#2}
 }
 
 
@@ -113,9 +113,9 @@
 \newcommand\setneg{\vphantom{\setpos}-}
 \newcommand\set@star{\text{*}}
 
-\newcommand\setspecial{\@ifstar{\@setspecial@star}{\@setspecial@no@star}}
+\newcommand\setspecial{\@ifstar{\tnssets@set@special@star}{\tnssets@set@special@no@star}}
 
-\newcommand\@setspecial@no@star[2]{
+\newcommand\tnssets@set@special@no@star[2]{
     \IfEqCase{#2}{
         {s}{ #1^{\set@star} }
         {n}{ #1^{\phantom{\set@star}}_{\setneg} }
@@ -125,7 +125,7 @@
     }
 }
 
-\newcommand\@setspecial@star[2]{
+\newcommand\tnssets@set@special@star[2]{
     \IfEqCase{#2}{
         {s}{ #1_{\neq 0} }
         {n}{ #1_{\le 0} }
@@ -205,53 +205,53 @@
 
 % Macros for french real intervals
 
-\newcommand\intervalCO{\@ifstar{\@intervalCO@star}{\@intervalCO@no@star}}
-\newcommand\@intervalCO@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{[}}}
-\newcommand\@intervalCO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{[}}}
+\newcommand\intervalCO{\@ifstar{\tnssets@intervalCO@star}{\tnssets@intervalCO@no@star}}
+\newcommand\tnssets@intervalCO@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{[}}}
+\newcommand\tnssets@intervalCO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{[}}}
 
-\newcommand\intervalC{\@ifstar{\@intervalC@star}{\@intervalC@no@star}}
-\newcommand\@intervalC@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{]}}}
-\newcommand\@intervalC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\intervalC{\@ifstar{\tnssets@intervalC@star}{\tnssets@intervalC@no@star}}
+\newcommand\tnssets@intervalC@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\tnssets@intervalC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{]}}}
 
-\newcommand\intervalO{\@ifstar{\@intervalO@star}{\@intervalO@no@star}}
-\newcommand\@intervalO@no@star[2]{\ensuremath{\tns@generic@interval@ext{]}{#1}{\tnsmathsep}{#2}{[}}}
-\newcommand\@intervalO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{]}{#1}{\tnsmathsep}{#2}{[}}}
+\newcommand\intervalO{\@ifstar{\tnssets@intervalO@star}{\tnssets@intervalO@no@star}}
+\newcommand\tnssets@intervalO@no@star[2]{\ensuremath{\tns@generic@interval@ext{]}{#1}{\tnsmathsep}{#2}{[}}}
+\newcommand\tnssets@intervalO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{]}{#1}{\tnsmathsep}{#2}{[}}}
 
-\newcommand\intervalOC{\@ifstar{\@intervalOC@star}{\@intervalOC@no@star}}
-\newcommand\@intervalOC@no@star[2]{\ensuremath{\tns@generic@interval@ext{]}{#1}{\tnsmathsep}{#2}{]}}}
-\newcommand\@intervalOC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{]}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\intervalOC{\@ifstar{\tnssets@intervalOC@star}{\tnssets@intervalOC@no@star}}
+\newcommand\tnssets@intervalOC@no@star[2]{\ensuremath{\tns@generic@interval@ext{]}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\tnssets@intervalOC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{]}{#1}{\tnsmathsep}{#2}{]}}}
 
 % Macros for american real intervals
 
-\newcommand\intervalCP{\@ifstar{\@intervalCP@star}{\@intervalCP@no@star}}
-\newcommand\@intervalCP@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{)}}}
-\newcommand\@intervalCP@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{)}}}
+\newcommand\intervalCP{\@ifstar{\tnssets@intervalCP@star}{\tnssets@intervalCP@no@star}}
+\newcommand\tnssets@intervalCP@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{)}}}
+\newcommand\tnssets@intervalCP@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{)}}}
 
-\newcommand\intervalP{\@ifstar{\@intervalP@star}{\@intervalP@no@star}}
-\newcommand\@intervalP@no@star[2]{\ensuremath{\tns@generic@interval@ext{(}{#1}{\tnsmathsep}{#2}{)}}}
-\newcommand\@intervalP@star[2]{\ensuremath{\tns@generic@interval@semi@ext{(}{#1}{\tnsmathsep}{#2}{)}}}
+\newcommand\intervalP{\@ifstar{\tnssets@intervalP@star}{\tnssets@intervalP@no@star}}
+\newcommand\tnssets@intervalP@no@star[2]{\ensuremath{\tns@generic@interval@ext{(}{#1}{\tnsmathsep}{#2}{)}}}
+\newcommand\tnssets@intervalP@star[2]{\ensuremath{\tns@generic@interval@semi@ext{(}{#1}{\tnsmathsep}{#2}{)}}}
 
-\newcommand\intervalPC{\@ifstar{\@intervalPC@star}{\@intervalPC@no@star}}
-\newcommand\@intervalPC@no@star[2]{\ensuremath{\tns@generic@interval@ext{(}{#1}{\tnsmathsep}{#2}{]}}}
-\newcommand\@intervalPC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{(}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\intervalPC{\@ifstar{\tnssets@intervalPC@star}{\tnssets@intervalPC@no@star}}
+\newcommand\tnssets@intervalPC@no@star[2]{\ensuremath{\tns@generic@interval@ext{(}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\tnssets@intervalPC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{(}{#1}{\tnsmathsep}{#2}{]}}}
 
 % Macros for discrete intervals
 
-\newcommand\ZintervalCO{\@ifstar{\@ZintervalCO@star}{\@ZintervalCO@no@star}}
-\newcommand\@ZintervalCO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
-\newcommand\@ZintervalCO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+\newcommand\ZintervalCO{\@ifstar{\tnssets@ZintervalCO@star}{\tnssets@ZintervalCO@no@star}}
+\newcommand\tnssets@ZintervalCO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+\newcommand\tnssets@ZintervalCO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
 
-\newcommand\ZintervalC{\@ifstar{\@ZintervalC@star}{\@ZintervalC@no@star}}
-\newcommand\@ZintervalC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
-\newcommand\@ZintervalC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+\newcommand\ZintervalC{\@ifstar{\tnssets@ZintervalC@star}{\tnssets@ZintervalC@no@star}}
+\newcommand\tnssets@ZintervalC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+\newcommand\tnssets@ZintervalC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
 
-\newcommand\ZintervalO{\@ifstar{\@ZintervalO@star}{\@ZintervalO@no@star}}
-\newcommand\@ZintervalO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
-\newcommand\@ZintervalO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+\newcommand\ZintervalO{\@ifstar{\tnssets@ZintervalO@star}{\tnssets@ZintervalO@no@star}}
+\newcommand\tnssets@ZintervalO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+\newcommand\tnssets@ZintervalO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
 
-\newcommand\ZintervalOC{\@ifstar{\@ZintervalOC@star}{\@ZintervalOC@no@star}}
-\newcommand\@ZintervalOC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
-\newcommand\@ZintervalOC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+\newcommand\ZintervalOC{\@ifstar{\tnssets@ZintervalOC@star}{\tnssets@ZintervalOC@no@star}}
+\newcommand\tnssets@ZintervalOC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+\newcommand\tnssets@ZintervalOC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
 
 % Macros for intervals - END
 
@@ -271,16 +271,14 @@
 % -- IMAGE N CO -- %
 % ---------------- %
 
-\newcommand\card{\@ifstar{\@card@star}{\@card@no@star}}
+\newcommand\card{\@ifstar{\tnssets@card@star}{\tnssets@card@no@star}}
 
-\DeclareMathOperator{\@card@no@star}{\operatorname{card}}
+\DeclareMathOperator{\tnssets@card@no@star}{\operatorname{card}}
 
-\newcommand\@card@star{\#}
+\newcommand\tnssets@card@star{\#}
 
 
 \DeclareMathOperator{\im}{\operatorname{im}}
-
-
 \DeclareMathOperator{\dom}{\operatorname{dom}}
 \DeclareMathOperator{\codom}{\operatorname{codom}}
 
@@ -296,9 +294,9 @@
 \newcommand\biject{\mathrel{\mathrlap{\onetoone}\mkern0.9mu\onto}}
  
     
-\newcommand\@partaial@deco[3]{\stackMath\mathrel{\stackinset{c}{#1}{c}{#2}{\scalebox{1}[0.4]{$\vert$}}{#3}}}
+\newcommand\tnsgeo@partial@deco[3]{\stackMath\mathrel{\stackinset{c}{#1}{c}{#2}{\scalebox{1}[0.4]{$\vert$}}{#3}}}
 
-\newcommand\pto{\@partaial@deco{-0.1ex}{0.15ex}{\to}}
-\newcommand\ponetoone{\@partaial@deco{0ex}{0ex}{\onetoone}}
-\newcommand\ponto{\@partaial@deco{-0.3ex}{0ex}{\onto}}
-\newcommand\pbiject{\@partaial@deco{-0.25ex}{0ex}{\biject}}
+\newcommand\pto{\tnsgeo@partial@deco{-0.1ex}{0.15ex}{\to}}
+\newcommand\ponetoone{\tnsgeo@partial@deco{0ex}{0ex}{\onetoone}}
+\newcommand\ponto{\tnsgeo@partial@deco{-0.3ex}{0ex}{\onto}}
+\newcommand\pbiject{\tnsgeo@partial@deco{-0.25ex}{0ex}{\biject}}

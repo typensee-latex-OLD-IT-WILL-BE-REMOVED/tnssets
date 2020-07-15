@@ -78,9 +78,9 @@ def texmacro(prefix, suffix, delimstart, delimend):
     macroname = f"{prefix}interval{suffix}"
 
     return f"""
-\\newcommand\\{macroname}{{\\@ifstar{{\\@{macroname}@star}}{{\\@{macroname}@no@star}}}}
-\\newcommand\\@{macroname}@no@star[2]{{\\ensuremath{{\\tns@generic@interval@ext{{{delimstart}}}{{#1}}{{\\tnsmathsep}}{{#2}}{{{delimend}}}}}}}
-\\newcommand\\@{macroname}@star[2]{{\\ensuremath{{\\tns@generic@interval@semi@ext{{{delimstart}}}{{#1}}{{\\tnsmathsep}}{{#2}}{{{delimend}}}}}}}
+\\newcommand\\{macroname}{{\\@ifstar{{\\tnssets@{macroname}@star}}{{\\tnssets@{macroname}@no@star}}}}
+\\newcommand\\tnssets@{macroname}@no@star[2]{{\\ensuremath{{\\tns@generic@interval@ext{{{delimstart}}}{{#1}}{{\\tnsmathsep}}{{#2}}{{{delimend}}}}}}}
+\\newcommand\\tnssets@{macroname}@star[2]{{\\ensuremath{{\\tns@generic@interval@semi@ext{{{delimstart}}}{{#1}}{{\\tnsmathsep}}{{#2}}{{{delimend}}}}}}}
     """.strip() + "\n"
 
 def texdoc(prefix, suffix):

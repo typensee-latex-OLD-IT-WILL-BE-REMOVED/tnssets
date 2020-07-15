@@ -12,52 +12,52 @@
 
 % Macros for french real intervals
 
-\newcommand\intervalCO{\@ifstar{\@intervalCO@star}{\@intervalCO@no@star}}
-\newcommand\@intervalCO@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{[}}}
-\newcommand\@intervalCO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{[}}}
+\newcommand\intervalCO{\@ifstar{\tnssets@intervalCO@star}{\tnssets@intervalCO@no@star}}
+\newcommand\tnssets@intervalCO@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{[}}}
+\newcommand\tnssets@intervalCO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{[}}}
 
-\newcommand\intervalC{\@ifstar{\@intervalC@star}{\@intervalC@no@star}}
-\newcommand\@intervalC@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{]}}}
-\newcommand\@intervalC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\intervalC{\@ifstar{\tnssets@intervalC@star}{\tnssets@intervalC@no@star}}
+\newcommand\tnssets@intervalC@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\tnssets@intervalC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{]}}}
 
-\newcommand\intervalO{\@ifstar{\@intervalO@star}{\@intervalO@no@star}}
-\newcommand\@intervalO@no@star[2]{\ensuremath{\tns@generic@interval@ext{]}{#1}{\tnsmathsep}{#2}{[}}}
-\newcommand\@intervalO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{]}{#1}{\tnsmathsep}{#2}{[}}}
+\newcommand\intervalO{\@ifstar{\tnssets@intervalO@star}{\tnssets@intervalO@no@star}}
+\newcommand\tnssets@intervalO@no@star[2]{\ensuremath{\tns@generic@interval@ext{]}{#1}{\tnsmathsep}{#2}{[}}}
+\newcommand\tnssets@intervalO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{]}{#1}{\tnsmathsep}{#2}{[}}}
 
-\newcommand\intervalOC{\@ifstar{\@intervalOC@star}{\@intervalOC@no@star}}
-\newcommand\@intervalOC@no@star[2]{\ensuremath{\tns@generic@interval@ext{]}{#1}{\tnsmathsep}{#2}{]}}}
-\newcommand\@intervalOC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{]}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\intervalOC{\@ifstar{\tnssets@intervalOC@star}{\tnssets@intervalOC@no@star}}
+\newcommand\tnssets@intervalOC@no@star[2]{\ensuremath{\tns@generic@interval@ext{]}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\tnssets@intervalOC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{]}{#1}{\tnsmathsep}{#2}{]}}}
 
 % Macros for american real intervals
 
-\newcommand\intervalCP{\@ifstar{\@intervalCP@star}{\@intervalCP@no@star}}
-\newcommand\@intervalCP@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{)}}}
-\newcommand\@intervalCP@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{)}}}
+\newcommand\intervalCP{\@ifstar{\tnssets@intervalCP@star}{\tnssets@intervalCP@no@star}}
+\newcommand\tnssets@intervalCP@no@star[2]{\ensuremath{\tns@generic@interval@ext{[}{#1}{\tnsmathsep}{#2}{)}}}
+\newcommand\tnssets@intervalCP@star[2]{\ensuremath{\tns@generic@interval@semi@ext{[}{#1}{\tnsmathsep}{#2}{)}}}
 
-\newcommand\intervalP{\@ifstar{\@intervalP@star}{\@intervalP@no@star}}
-\newcommand\@intervalP@no@star[2]{\ensuremath{\tns@generic@interval@ext{(}{#1}{\tnsmathsep}{#2}{)}}}
-\newcommand\@intervalP@star[2]{\ensuremath{\tns@generic@interval@semi@ext{(}{#1}{\tnsmathsep}{#2}{)}}}
+\newcommand\intervalP{\@ifstar{\tnssets@intervalP@star}{\tnssets@intervalP@no@star}}
+\newcommand\tnssets@intervalP@no@star[2]{\ensuremath{\tns@generic@interval@ext{(}{#1}{\tnsmathsep}{#2}{)}}}
+\newcommand\tnssets@intervalP@star[2]{\ensuremath{\tns@generic@interval@semi@ext{(}{#1}{\tnsmathsep}{#2}{)}}}
 
-\newcommand\intervalPC{\@ifstar{\@intervalPC@star}{\@intervalPC@no@star}}
-\newcommand\@intervalPC@no@star[2]{\ensuremath{\tns@generic@interval@ext{(}{#1}{\tnsmathsep}{#2}{]}}}
-\newcommand\@intervalPC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{(}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\intervalPC{\@ifstar{\tnssets@intervalPC@star}{\tnssets@intervalPC@no@star}}
+\newcommand\tnssets@intervalPC@no@star[2]{\ensuremath{\tns@generic@interval@ext{(}{#1}{\tnsmathsep}{#2}{]}}}
+\newcommand\tnssets@intervalPC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{(}{#1}{\tnsmathsep}{#2}{]}}}
 
 % Macros for discrete intervals
 
-\newcommand\ZintervalCO{\@ifstar{\@ZintervalCO@star}{\@ZintervalCO@no@star}}
-\newcommand\@ZintervalCO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
-\newcommand\@ZintervalCO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+\newcommand\ZintervalCO{\@ifstar{\tnssets@ZintervalCO@star}{\tnssets@ZintervalCO@no@star}}
+\newcommand\tnssets@ZintervalCO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+\newcommand\tnssets@ZintervalCO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
 
-\newcommand\ZintervalC{\@ifstar{\@ZintervalC@star}{\@ZintervalC@no@star}}
-\newcommand\@ZintervalC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
-\newcommand\@ZintervalC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+\newcommand\ZintervalC{\@ifstar{\tnssets@ZintervalC@star}{\tnssets@ZintervalC@no@star}}
+\newcommand\tnssets@ZintervalC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+\newcommand\tnssets@ZintervalC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
 
-\newcommand\ZintervalO{\@ifstar{\@ZintervalO@star}{\@ZintervalO@no@star}}
-\newcommand\@ZintervalO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
-\newcommand\@ZintervalO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+\newcommand\ZintervalO{\@ifstar{\tnssets@ZintervalO@star}{\tnssets@ZintervalO@no@star}}
+\newcommand\tnssets@ZintervalO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+\newcommand\tnssets@ZintervalO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
 
-\newcommand\ZintervalOC{\@ifstar{\@ZintervalOC@star}{\@ZintervalOC@no@star}}
-\newcommand\@ZintervalOC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
-\newcommand\@ZintervalOC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+\newcommand\ZintervalOC{\@ifstar{\tnssets@ZintervalOC@star}{\tnssets@ZintervalOC@no@star}}
+\newcommand\tnssets@ZintervalOC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+\newcommand\tnssets@ZintervalOC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
 
 % Macros for intervals - END

@@ -8,15 +8,13 @@
 
 
 
-\newcommand\card{\@ifstar{\@card@star}{\@card@no@star}}
+\newcommand\card{\@ifstar{\tnssets@card@star}{\tnssets@card@no@star}}
 
-\DeclareMathOperator{\@card@no@star}{\operatorname{card}}
+\DeclareMathOperator{\tnssets@card@no@star}{\operatorname{card}}
 
-\newcommand\@card@star{\#}
+\newcommand\tnssets@card@star{\#}
 
 
 \DeclareMathOperator{\im}{\operatorname{im}}
-
-
 \DeclareMathOperator{\dom}{\operatorname{dom}}
 \DeclareMathOperator{\codom}{\operatorname{codom}}
