@@ -38,6 +38,12 @@
 \usepackage{cbdevtool}
 
 
+% Sections numbering
+
+\renewcommand\thesection{\arabic{section}.}
+\renewcommand\thesubsection{\alph{subsection}.}
+\renewcommand\thesubsubsection{\roman{subsubsection}.}
+
 
 % MISC
 
@@ -688,9 +694,14 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \section{Toutes les fiches techniques} \label{techincal-ids}
 
 
+
+
+
+
 \subsection{Ensembles}
 
 \subsubsection{Ensembles versus accolades}
+
 
 
 \IDmacro{setgene}{1}{1}
@@ -711,6 +722,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 \subsubsection{Ensembles pour la géométrie} \label{set-geo}
+
 
 
 \IDmacro*{setgeo}{1}
@@ -734,6 +746,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \subsubsection{Ensembles probabilistes}
 
 
+
 \IDmacro*{setproba}{1}
 
 \IDarg{} un seul caractère \ascii{} majuscule indiquant un ensemble probabiliste.
@@ -755,6 +768,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \subsubsection{Ensembles pour l'algèbre générale}
 
 
+
 \IDmacro*{setalge}{1}
 
 \IDarg{} soit l'une des lettres  \texttt{h} et \texttt{k}, soit un seul caractère \ascii{} majuscule indiquant un ensemble de type anneau ou corps.
@@ -774,6 +788,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 \subsubsection{Ensembles classiques suffixés}
+
 
 
 % == Docs for classical sets - START == %
@@ -846,6 +861,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \subsubsection{Des suffixes à la carte}
 
 
+
 \IDmacro*{setspecial}{2}
 
 \IDmacro*{setspecial*}{2}
@@ -853,9 +869,12 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \IDarg{1} l'ensemble à "suffixer".
 
 \IDarg{2} l'un des suffixes \prefix{n}, \prefix{p}, \prefix{s}, \prefix{sn} ou \prefix{sp}.
+
+
 \subsection{Intervalles}
 
 \subsubsection{Intervalles réels - Notation française (?\,)}
+
 
 
 Pour toutes les macros ci-dessous, la version non étoilée produit des délimiteurs qui s'étirent si besoin verticalement, tandis que la version étoilée ne le fait pas.
@@ -919,6 +938,7 @@ Pour toutes les macros ci-dessous, la version non étoilée produit des délimit
 \subsubsection{Intervalles réels -- Notation américaine}
 
 
+
 Pour toutes les macros ci-dessous, la version non étoilée produit des délimiteurs qui s'étirent si besoin verticalement, tandis que la version étoilée ne le fait pas.
 
 
@@ -966,6 +986,7 @@ Pour toutes les macros ci-dessous, la version non étoilée produit des délimit
 
 
 \subsubsection{Intervalles discrets d'entiers}
+
 
 
 Pour toutes les macros ci-dessous, la version non étoilée produit des délimiteurs qui s'étirent si besoin verticalement, tandis que la version étoilée ne le fait pas.
@@ -1021,7 +1042,10 @@ Pour toutes les macros ci-dessous, la version non étoilée produit des délimit
 \IDarg{2} borne supérieure $b$ de l'intervalle $\ZintervalOC{a}{b}$.
 
 % Docs for discrete intervals - END
+
+
 \subsection{Unions et intersections en mode ligne}
+
 
 
 \IDmacro*{dcap}{0}
@@ -1029,9 +1053,12 @@ Pour toutes les macros ci-dessous, la version non étoilée produit des délimit
 \IDmacro*{dcup}{0}
 
 \IDmacro*{dsqcup}{0}
+
+
 \subsection{Applications}
 
 \subsubsection{Cardinal, image et compagnie}
+
 
 
 \IDmacro*{card}{0}
@@ -1047,7 +1074,10 @@ Pour toutes les macros ci-dessous, la version non étoilée produit des délimit
 \IDmacro*{codom}{0}
 
 \IDmacro*{im}{0}
+
+
 \subsubsection{Application totale, partielle, injective, surjective et/ou bijective}
+
 
 
 \vspace{-.75em}
@@ -1068,6 +1098,8 @@ Pour toutes les macros ci-dessous, la version non étoilée produit des délimit
     
     \IDmacro*{pbiject}{0}
 \end{multicols}
+
+
 
 
 \end{document}
