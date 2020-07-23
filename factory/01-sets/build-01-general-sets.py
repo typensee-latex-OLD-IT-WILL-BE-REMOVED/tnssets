@@ -261,8 +261,7 @@ for onemacro in allmacros + ["ZZZZ-unsed-ZZZZ"]:
             template_tex += [
                 f"""
 \\foreach \\k in {{{lastmacros}}}{{
-
-    \\IDope{{\k}}
+    \\IDope{{\k}} \\quad
 }}
                 """,
                 "\\separation"

@@ -87,9 +87,9 @@ def texdoc(prefix, suffix):
     macroname = f"{prefix}interval{suffix}"
 
     return f"""
-\\IDmacro*{{{macroname}}}{{2}}
+\\IDmacro*[1]{{{macroname}}}{{2}}
 
-\\IDmacro*{{{macroname}*}}{{2}}
+\\IDmacro*   {{{macroname}*}}{{2}}
 
 \\IDarg{{1}} borne inférieure $a$ de l'intervalle $\\{macroname}{{a}}{{b}}$.
 
