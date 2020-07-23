@@ -262,7 +262,7 @@ for onemacro in allmacros + ["ZZZZ-unsed-ZZZZ"]:
                 f"""
 \\foreach \\k in {{{lastmacros}}}{{
 
-    \\IDmacro*{{\k}}{{0}}
+    \\IDope{{\k}}
 }}
                 """,
                 "\\separation"

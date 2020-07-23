@@ -12,6 +12,8 @@
 \usepackage[top=2cm, bottom=2cm, left=1.5cm, right=1.5cm]{geometry}
 \usepackage{enumitem}
 
+\usepackage{pgffor}
+
 \usepackage{multicol}
 
 \usepackage{makecell}
@@ -35,7 +37,7 @@
 
 \usepackage{ifthen}
 
-\usepackage{cbdevtool}
+\usepackage{macroenvsign}
 
 
 % Sections numbering
@@ -794,63 +796,63 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 % == Docs for classical sets - START == %
 \foreach \k in {NN, NNs}{
 
-    \IDmacro*{\k}{0}
+    \IDope{\k}
 }
                 
 \separation
 
 \foreach \k in {PP}{
 
-    \IDmacro*{\k}{0}
+    \IDope{\k}
 }
                 
 \separation
 
 \foreach \k in {ZZ, ZZn, ZZp, ZZs, ZZsn, ZZsp}{
 
-    \IDmacro*{\k}{0}
+    \IDope{\k}
 }
                 
 \separation
 
 \foreach \k in {DD, DDn, DDp, DDs, DDsn, DDsp}{
 
-    \IDmacro*{\k}{0}
+    \IDope{\k}
 }
                 
 \separation
 
 \foreach \k in {QQ, QQn, QQp, QQs, QQsn, QQsp}{
 
-    \IDmacro*{\k}{0}
+    \IDope{\k}
 }
                 
 \separation
 
 \foreach \k in {RR, RRn, RRp, RRs, RRsn, RRsp}{
 
-    \IDmacro*{\k}{0}
+    \IDope{\k}
 }
                 
 \separation
 
 \foreach \k in {CC, CCs}{
 
-    \IDmacro*{\k}{0}
+    \IDope{\k}
 }
                 
 \separation
 
 \foreach \k in {HH, HHs}{
 
-    \IDmacro*{\k}{0}
+    \IDope{\k}
 }
                 
 \separation
 
 \foreach \k in {OO, OOs}{
 
-    \IDmacro*{\k}{0}
+    \IDope{\k}
 }
                 % == Docs for classical sets - END == %
 
@@ -1048,11 +1050,11 @@ Pour toutes les macros ci-dessous, la version non étoilée produit des délimit
 
 
 
-\IDmacro*{dcap}{0}
+\IDope{dcap}
 
-\IDmacro*{dcup}{0}
+\IDope{dcup}
 
-\IDmacro*{dsqcup}{0}
+\IDope{dsqcup}
 
 
 \subsection{Applications}
@@ -1061,19 +1063,19 @@ Pour toutes les macros ci-dessous, la version non étoilée produit des délimit
 
 
 
-\IDmacro*{card}{0}
+\IDope{card}
 
-\IDmacro*{card*}{0}
+\IDope{card*}
 
 
 \separation
 
 
-\IDmacro*{dom}{0}
+\IDope{dom}
 
-\IDmacro*{codom}{0}
+\IDope{codom}
 
-\IDmacro*{im}{0}
+\IDope{im}
 
 
 \subsubsection{Application totale, partielle, injective, surjective et/ou bijective}
@@ -1082,21 +1084,21 @@ Pour toutes les macros ci-dessous, la version non étoilée produit des délimit
 
 \vspace{-.75em}
 \begin{multicols}{2}
-    \IDmacro*{to}{0}
+    \IDope{to}
     
-    \IDmacro*{onetoone}{0}
+    \IDope{onetoone}
     
-    \IDmacro*{onto}{0}
+    \IDope{onto}
     
-    \IDmacro*{biject}{0}
+    \IDope{biject}
     
-    \IDmacro*{pto}{0}
+    \IDope{pto}
     
-    \IDmacro*{ponetoone}{0}
+    \IDope{ponetoone}
     
-    \IDmacro*{ponto}{0}
+    \IDope{ponto}
     
-    \IDmacro*{pbiject}{0}
+    \IDope{pbiject}
 \end{multicols}
 
 
