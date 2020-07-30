@@ -1,4 +1,25 @@
 ==========
+2020-07-30
+==========
+
+**New minor version version::``0.2.0-beta`` of ¨tnssets:** see the new features below.
+
+
+**Composition:** two features are available.
+
+    1) ``\compo`` is an operator to indicate the composition of two applications.
+
+    1) ``\multicomp`` allows to indicate one application that is composed by itself several times.
+
+
+==========
+2020-07-29
+==========
+
+**Internal machinery for the documentation:** the ¨python file path::``build-01-dep[slow].py`` updates automatically a ¨tex file with all the packages used by ¨tnssets.
+
+
+==========
 2020-07-23
 ==========
 

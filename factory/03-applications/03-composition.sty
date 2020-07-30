@@ -1,0 +1,49 @@
+% == PACKAGES USED == %
+
+\RequirePackage{forloop}
+\RequirePackage{xstring}
+
+
+% == DEFINITIONS == %
+
+\newcommand\compo{\circ}
+
+%    #1: option for the formatting.
+%
+%    #2: the function.
+%    #3: the order.
+
+\newcommand\multicompo[3][r]{%
+	\IfEqCase{#1}{%
+        {r}{\let\callit\tnssets@multi@compo@rafter}%
+        {exp}{\let\callit\tnssets@multi@compo@expand}%
+        {dot}{\let\callit\tnssets@multi@compo@dot}%
+    }[%
+        \PackageError{tnssets}{unknown option}%
+                              {you can use c (default), e, exp and dot}%
+    ]%
+    %
+    \callit{#2}{#3}%
+}
+
+
+\newcommand\tnssets@multi@compo@rafter[2]{%
+	#1^{\langle\kern.1ex#2\kern.1ex\rangle}%
+}
+
+
+\newcommand\tnssets@multi@compo@dot[2]{%
+	#1 \compo \cdots \compo #1%
+}
+
+
+\newcounter{tnssets@multi@compo@counter}
+
+\newcommand\tnssets@multi@compo@expand[2]{%
+	#1%
+	\forloop{tnssets@multi@compo@counter}%
+	        {1}%
+	        {\value{tnssets@multi@compo@counter} < #2}{%
+    	 \compo #1%
+    }%
+}

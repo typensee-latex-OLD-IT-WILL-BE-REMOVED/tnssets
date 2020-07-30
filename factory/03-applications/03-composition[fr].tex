@@ -1,0 +1,76 @@
+\documentclass[12pt,a4paper]{article}
+
+\makeatletter
+    \input{../config/header[fr].sty}
+
+    \usepackage{03-composition}
+\makeatother
+
+    
+\begin{document}
+
+%\section{Applications}
+
+\subsection{Composition}
+
+\newparaexample{Opérateur}
+
+La macro \macro{compo} est juste un alias de \macro{circ}.
+
+\begin{latexex}
+$f \compo g$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Compositions successives}
+
+La macro \macro{multicompo} sert à indiquer la composition d'une application plusieurs fois de suite par elle-même. Voici toutes les mises en forme disponibles où l'option \verb#exp# nécessite que le nombre d'applications composées soit un naturel non nul connu.
+Vous noterez que l'écriture par défaut, qui n'est pas standard, n'est pas $f^{(p)}$ car cette notation est traditionnellement utilisée pour indiquer la dérivée p\ieme{} d'une application.
+
+\begin{latexex}
+ $\multicompo     {f}{5}
+= \multicompo[exp]{f}{5}$
+
+ $\multicompo     {f}{p}
+= \multicompo[dot]{f}{p}$
+\end{latexex}
+
+
+\begin{remark}
+	La convention retenue est analogue à ce que l'on fait avec les puissances de nombres réels.
+	En particulier, $\multicompo{f}{1} = \multicompo[exp]{f}{1}$.
+\end{remark}
+
+
+% ---------------------- %
+
+
+\subsection{Fiche technique}
+
+\IDope{compo}  \hfill \mwhyprefix{compo}{sition}
+
+
+\separation
+
+\IDmacro{multicompo}{1}{2}
+
+\IDoption{} la valeur par défaut est \verb+r+. 
+            Voici les différentes valeurs possibles.
+\begin{enumerate}
+	\item \verb+r  + : écriture utilisant des chevrons.  \hfill \mwhyprefix{r}{after}.
+
+	\extraspace 
+	
+	\item \verb+exp+ : écriture développée.  \hfill \mwhyprefix{exp}{and}.
+
+	\item \verb+dot+ : écriture faussement développée utilisant des points de suspension.
+\end{enumerate}
+
+\IDarg{1} l'application.
+
+\IDarg{2} le nombre d'applications composées.
+
+\end{document}

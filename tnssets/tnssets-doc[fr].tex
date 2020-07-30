@@ -234,10 +234,10 @@
 	théorie générale des ensembles\\%
 	et des applications\\%
 	{\footnotesize Code source disponible sur \url{https://github.com/typensee-latex/tnssets.git}.}\\%
-{\footnotesize Version \texttt{0.0.0-beta} développée et testée sur \macosxname{}.}%
+{\footnotesize Version \texttt{0.2.0-beta} développée et testée sur \macosxname{}.}%
 }
 \author{Christophe BAL}
-\date{2020-07-10}
+\date{2020-07-30}
 
 \maketitle
 
@@ -258,9 +258,32 @@
 
 Le package \verb+tnssets+ propose des macros utiles pour la rédaction de texte sur la théorie basique et générale des ensembles et des applications via un codage sémantique simple.
 
-\begin{remark}
-	Ce package s'appuie sur \verb+tnscom+ disponible sur \url{https://github.com/typensee-latex/tnscom.git}.
-\end{remark}
+
+% tnscom used - START
+\section{Beta-dépendance}
+
+\verb#tnscom# qui est disponible sur \url{https://github.com/typensee-latex/tnscom.git} est un package utilisé en coulisse.
+% tnscom used - END
+% List of packages - START
+\section{Packages utilisés}
+
+La roue ayant déjà été inventée, le package \verb#tnssets# réutilise les packages suivants sans aucun scrupule.
+
+\begin{multicols}{4}
+    \begin{itemize}
+        \item \verb#amssymb#
+        \item \verb#dsfont#
+        \item \verb#forloop#
+        \item \verb#mathrsfs#
+        \item \verb#mathtools#
+        \item \verb#relsize#
+        \item \verb#stackengine#
+        \item \verb#stmaryrd#
+        \item \verb#xstring#
+        \item \verb#yhmath#
+    \end{itemize}
+\end{multicols}
+% List of packages - END
 \section{Ensembles}
 
 \subsection{Ensembles versus accolades}
@@ -670,6 +693,43 @@ $b: G \pbiject H$ est une application partielle bijective.
 
 
 % ---------------------- %
+%\section{Applications}
+
+\subsection{Composition}
+
+\newparaexample{Opérateur}
+
+La macro \macro{compo} est juste un alias de \macro{circ}.
+
+\begin{latexex}
+$f \compo g$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Compositions successives}
+
+La macro \macro{multicompo} sert à indiquer la composition d'une application plusieurs fois de suite par elle-même. Voici toutes les mises en forme disponibles où l'option \verb#exp# nécessite que le nombre d'applications composées soit un naturel non nul connu.
+Vous noterez que l'écriture par défaut, qui n'est pas standard, n'est pas $f^{(p)}$ car cette notation est traditionnellement utilisée pour indiquer la dérivée p\ieme{} d'une application.
+
+\begin{latexex}
+ $\multicompo     {f}{5}
+= \multicompo[exp]{f}{5}$
+
+ $\multicompo     {f}{p}
+= \multicompo[dot]{f}{p}$
+\end{latexex}
+
+
+\begin{remark}
+	La convention retenue est analogue à ce que l'on fait avec les puissances de nombres réels.
+	En particulier, $\multicompo{f}{1} = \multicompo[exp]{f}{1}$.
+\end{remark}
+
+
+% ---------------------- %
 \newpage
 
 \section{Historique}
@@ -685,6 +745,28 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 % Changes shown - START
 
     \medskip
+    \item[2020-07-30] Nouvelle version mineure \verb+0.2.0-beta+.
+    
+    \begin{itemize}[itemsep=.5em]
+        \item \topic{Composition d'applications}
+        \begin{itemize}[itemsep=.5em]
+            \item \macro{compo} est un opérateur de composition de deux applications.
+    
+            \item \macro{multicomp} permet d'indiquer des compositions successives d'une application par elle-même.
+        \end{itemize}
+    
+    
+    
+    % ------------------------ %
+    
+    
+        \separation
+    \end{itemize}
+    
+
+% ------------------------ %
+
+    \medskip
     \item[2020-07-10] Première version \verb+0.0.0-beta+.
 % ------------------------ %
 
@@ -694,6 +776,9 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 \newpage
 \section{Toutes les fiches techniques} \label{techincal-ids}
+
+
+
 
 
 
@@ -1091,6 +1176,34 @@ Pour toutes les macros ci-dessous, la version non étoilée produit des délimit
     
     \IDope{pbiject}
 \end{multicols}
+
+
+\subsubsection{Composition}
+
+
+
+\IDope{compo}  \hfill \mwhyprefix{compo}{sition}
+
+
+\separation
+
+\IDmacro{multicompo}{1}{2}
+
+\IDoption{} la valeur par défaut est \verb+r+. 
+            Voici les différentes valeurs possibles.
+\begin{enumerate}
+	\item \verb+r  + : écriture utilisant des chevrons.  \hfill \mwhyprefix{r}{after}.
+
+	\extraspace 
+	
+	\item \verb+exp+ : écriture développée.  \hfill \mwhyprefix{exp}{and}.
+
+	\item \verb+dot+ : écriture faussement développée utilisant des points de suspension.
+\end{enumerate}
+
+\IDarg{1} l'application.
+
+\IDarg{2} le nombre d'applications composées.
 
 
 
