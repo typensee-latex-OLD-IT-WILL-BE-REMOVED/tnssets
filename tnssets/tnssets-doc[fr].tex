@@ -699,10 +699,11 @@ $b: G \pbiject H$ est une application partielle bijective.
 
 \newparaexample{Opérateur}
 
-La macro \macro{compo} est juste un alias de \macro{circ}.
+La macro \macro{compo} est juste une version un peu plus petite de \macro{circ}.
 
 \begin{latexex}
-$f \compo g$
+$f \compo g$ et non
+$f \circ g$
 \end{latexex}
 
 
@@ -715,8 +716,8 @@ La macro \macro{multicompo} sert à indiquer la composition d'une application pl
 Vous noterez que l'écriture par défaut, qui n'est pas standard, n'est pas $f^{(p)}$ car cette notation est traditionnellement utilisée pour indiquer la dérivée p\ieme{} d'une application.
 
 \begin{latexex}
- $\multicompo     {f}{5}
-= \multicompo[exp]{f}{5}$
+ $\multicompo     {g}{5}
+= \multicompo[exp]{g}{5}$
 
  $\multicompo     {f}{p}
 = \multicompo[dot]{f}{p}$

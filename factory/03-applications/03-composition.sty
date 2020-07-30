@@ -1,12 +1,16 @@
 % == PACKAGES USED == %
 
 \RequirePackage{forloop}
+\RequirePackage{graphicx}
 \RequirePackage{xstring}
+\RequirePackage{yhmath}
 
 
 % == DEFINITIONS == %
 
-\newcommand\compo{\circ}
+\newcommand\compo{%
+	\operatorname{\text{\raise0.15ex\hbox{\scalebox{0.75}{$\circ$}}}}%
+}
 
 %    #1: option for the formatting.
 %
@@ -28,7 +32,7 @@
 
 
 \newcommand\tnssets@multi@compo@rafter[2]{%
-	#1^{\langle\kern.1ex#2\kern.1ex\rangle}%
+	#1^{\kern.1ex\langle\kern.15ex#2\kern.15ex\rangle}%
 }
 
 
