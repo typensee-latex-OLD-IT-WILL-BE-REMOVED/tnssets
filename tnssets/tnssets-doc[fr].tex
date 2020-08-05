@@ -42,8 +42,8 @@
 
 % Sections numbering
 
-\renewcommand\thesection{\arabic{section}.}
-\renewcommand\thesubsection{\alph{subsection}.}
+\renewcommand\thesection{\Alph{section}.}
+\renewcommand\thesubsection{\arabic{subsection}.}
 \renewcommand\thesubsubsection{\roman{subsubsection}.}
 
 
@@ -234,10 +234,10 @@
 	théorie générale des ensembles\\%
 	et des applications\\%
 	{\footnotesize Code source disponible sur \url{https://github.com/typensee-latex/tnssets.git}.}\\%
-{\footnotesize Version \texttt{0.2.0-beta} développée et testée sur \macosxname{}.}%
+{\footnotesize Version \texttt{0.3.0-beta} développée et testée sur \macosxname{}.}%
 }
 \author{Christophe BAL}
-\date{2020-07-30}
+\date{2020-08-05}
 
 \maketitle
 
@@ -272,6 +272,7 @@ La roue ayant déjà été inventée, le package \verb#tnssets# réutilise les p
 \begin{multicols}{4}
     \begin{itemize}
         \item \verb#amssymb#
+        \item \verb#bbold#
         \item \verb#dsfont#
         \item \verb#forloop#
         \item \verb#mathrsfs#
@@ -426,7 +427,7 @@ $\FF$
 % ---------------------- %
 
 
-\subsection{Ensembles classiques suffixés}
+\subsubsection{Ensembles classiques suffixés}
 
 L'ensemble $\RR$ nous permet de voir tous les cas possibles. 
 
@@ -472,7 +473,7 @@ Notez qu'il est interdit d'utiliser \verb+$\CCn$+ pour $\setspecial{\CC}{n}$ car
 % ---------------------- %
 
 
-\subsection{Des suffixes à la carte}
+\subsubsection{Des suffixes à la carte}
 
 Dans l'exemple suivant, il faut savoir que le 2\ieme{} argument ne peut prendre que les valeurs \prefix{n}, \prefix{p}, \prefix{s}, \prefix{sn} ou \prefix{sp}.
 
@@ -695,6 +696,122 @@ $b: G \pbiject H$ est une application partielle bijective.
 % ---------------------- %
 %\section{Applications}
 
+\subsection{Fonction identité}
+
+\begin{latexex}
+$\id_A$ vérifie par définition
+$\forall x \in A$, $\id(x) = x$.
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsection{Fonction caractéristique}
+
+\newparaexample{Version très utilisée}
+
+\begin{latexex}
+$\caract_A$ vérifie par définition
+$\forall x \in A$, $\caract_A(x) = 1$ et
+$\forall x \notin A$, $\caract_A(x) = 0$.
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Version alternative}
+
+\begin{latexex}
+$\caractone_A = \caract_A$
+\end{latexex}
+
+
+% ---------------------- %
+%\section{Applications}
+
+\subsection{Définition explicite d'une fonction}
+
+\newparaexample{Écriture par défaut}
+
+\begin{latexex}
+$\funcdef{f}{x}{x^2}%
+            {I}{J}$
+\end{latexex}
+
+
+\begin{remark}
+	Même si cela est peu utile, vous pouvez utiliser la mise en forme dans du texte pour obtenir
+	$\funcdef{f}{x}{x^2}%
+            {I}{J}$
+    mais c'est un peu affreux.
+\end{remark}
+
+% ---------------------- %
+
+
+\newparaexample{Écriture alternative}
+
+On peut cacher le trait vertical via l'option \prefix{s} pour \whyprefix{s}{hort} soit \inenglish{court}.
+
+\begin{latexex}
+$\funcdef[s]{f}{x}{x^2}%
+               {I}{J}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Écriture en ligne}
+
+Pour avoir tout sur une ligne, ce qui est l'idéal pour une insertion dans du texte, il suffit d'utiliser l'option \prefix{h} pour \whyprefix{h}{orizontal}.
+\begin{latexex}
+Soit $\funcdef[h]{f}{x}{x^2}%
+                    {I}{J}$ ...
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Écriture en ligne incomplète}
+
+En mode horizontal, les ensembles peuvent être de valeur vide pour ne pas les indiquer.
+
+\begin{latexex}
+$\funcdef[h]{f}{x}{x^2}{}{J}$
+
+$\funcdef[h]{f}{x}{x^2}{I}{}$
+
+$\funcdef[h]{f}{x}{x^2}{}{}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Écriture textuelle}
+
+On peut enfin obtenir une version \emph{\og textuelle \fg} via la macro \macro{txtfuncdef} où \prefix{txt} est pour \prefix{texte}.
+Cette macro  ne s'utilise pas en mode mathématique et elle accepte l'omission des ensembles.
+
+\begin{latexex}
+\txtfuncdef{f}{x}{x^2}{I}{J}
+
+\txtfuncdef{f}{x}{x^2}{}{J}
+
+\txtfuncdef{f}{x}{x^2}{I}{}
+
+\txtfuncdef{f}{x}{x^2}{}{}
+\end{latexex}
+
+
+
+% ---------------------- %
+%\section{Applications}
+
 \subsection{Composition}
 
 \newparaexample{Opérateur}
@@ -712,7 +829,11 @@ $f \circ g$
 
 \newparaexample{Compositions successives}
 
-La macro \macro{multicompo} sert à indiquer la composition d'une application plusieurs fois de suite par elle-même. Voici toutes les mises en forme disponibles où l'option \verb#exp# nécessite que le nombre d'applications composées soit un naturel non nul connu.
+La macro \macro{multicompo} sert à indiquer la composition d'une application plusieurs fois de suite par elle-même
+\footnote{
+	Une telle fonction $f$ doit vérifier $\im f \subseteq \dom f$.
+}.
+Voici toutes les mises en forme disponibles où l'option \verb#exp# nécessite que le nombre d'applications composées soit un naturel non nul connu.
 Vous noterez que l'écriture par défaut, qui n'est pas standard, n'est pas $f^{(p)}$ car cette notation est traditionnellement utilisée pour indiquer la dérivée p\ieme{} d'une application.
 
 \begin{latexex}
@@ -726,7 +847,7 @@ Vous noterez que l'écriture par défaut, qui n'est pas standard, n'est pas $f^{
 
 \begin{remark}
 	La convention retenue est analogue à ce que l'on fait avec les puissances de nombres réels.
-	En particulier, $\multicompo{f}{1} = \multicompo[exp]{f}{1}$.
+	En particulier, $\multicompo{f}{1} = \multicompo[exp]{f}{1}$ et $\multicompo{f}{0} = \id_{\dom f}$ .
 \end{remark}
 
 
@@ -746,6 +867,32 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 % Changes shown - START
 
     \medskip
+    \item[2020-08-05] Nouvelle version mineure \verb+0.3.0-beta+.
+    
+    \begin{itemize}[itemsep=.5em]
+        \item \topic*{Définition explicite d'une fonction}
+              intégration de deux macros initialement proposées par \verb#tnsana# qui est disponible sur \url{https://github.com/typensee-latex/tnsana.git}.
+    
+        \begin{itemize}[itemsep=.5em]
+            \item \macro{funcdef} peut produire trois versions symboliques.
+    
+            \item \macro{txtfuncdef} produit une version textuelle courte.
+        \end{itemize}
+    
+    
+        \item \topic{Fonctions spéciales}
+    
+        \begin{itemize}[itemsep=.5em]
+            \item Ajout de \macro{id} pour la fonction identité.
+    
+            \item Ajout de \macro{caract} et \macro{caractone} pour deux versions de la fonction caratéristque d'un ensemble.
+        \end{itemize}
+    \end{itemize}
+    
+    \separation
+% ------------------------ %
+
+    \medskip
     \item[2020-07-30] Nouvelle version mineure \verb+0.2.0-beta+.
     
     \begin{itemize}[itemsep=.5em]
@@ -755,15 +902,9 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
     
             \item \macro{multicomp} permet d'indiquer des compositions successives d'une application par elle-même.
         \end{itemize}
-    
-    
-    
-    % ------------------------ %
-    
-    
-        \separation
     \end{itemize}
     
+    \separation
 
 % ------------------------ %
 
@@ -875,7 +1016,9 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 % ---------------------- %
 
 
-\subsubsection{Ensembles classiques suffixés}
+\subsubsection{Ensembles classiques en mathématiques et en informatique théorique} 
+
+\paragraph{Ensembles classiques suffixés}
 
 
 
@@ -937,7 +1080,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 % ---------------------- %
 
 
-\subsubsection{Des suffixes à la carte}
+\paragraph{Des suffixes à la carte}
 
 
 
@@ -1177,6 +1320,62 @@ Pour toutes les macros ci-dessous, la version non étoilée produit des délimit
     
     \IDope{pbiject}
 \end{multicols}
+
+
+\subsubsection{Fonction identité}
+
+
+
+\IDope{id}
+
+
+% ---------------------- %
+
+
+\subsubsection{Fonction caractéristique}
+
+
+
+\IDope{caract}
+
+\IDope{caractone}
+
+
+\subsubsection{Définition explicite d'une fonction}
+
+
+
+\IDmacro{funcdef}{1}{5}
+
+
+\IDoption{}  la valeur par défaut \verb+u+. 
+\begin{enumerate}
+	\item \verb+u+ : écriture empilée avec un trait vertical.
+	
+	\item \verb+s+ : écriture empilée sans trait vertical.
+
+	\item \verb+h+ : écriture horizontale en ligne.
+\end{enumerate}
+
+
+\IDarg{1} la fonction.
+
+\IDarg{2} la variable.
+
+\IDarg{3} la formule explicite de définition.
+
+\IDarg{4} l'ensemble de départ. Cet argument peut être vide si le mode \verb+h+ est activé
+
+\IDarg{5} l'ensemble d'arrivée.
+
+
+\separation
+
+
+\IDmacro[a]{txtfuncdef}{5}
+
+
+\IDargs{1..5} voir les explications données ci-dessus pour la macro \macro{funcdef}.
 
 
 \subsubsection{Composition}

@@ -2,8 +2,10 @@
 
 \makeatletter
     \input{../config/header[fr].sty}
+    \usepackage{01-image-n-co}
+	\usepackage{03-special}
 
-    \usepackage{03-composition}
+    \usepackage{05-composition}
 \makeatother
 
     
@@ -28,7 +30,11 @@ $f \circ g$
 
 \newparaexample{Compositions successives}
 
-La macro \macro{multicompo} sert à indiquer la composition d'une application plusieurs fois de suite par elle-même. Voici toutes les mises en forme disponibles où l'option \verb#exp# nécessite que le nombre d'applications composées soit un naturel non nul connu.
+La macro \macro{multicompo} sert à indiquer la composition d'une application plusieurs fois de suite par elle-même
+\footnote{
+	Une telle fonction $f$ doit vérifier $\im f \subseteq \dom f$.
+}.
+Voici toutes les mises en forme disponibles où l'option \verb#exp# nécessite que le nombre d'applications composées soit un naturel non nul connu.
 Vous noterez que l'écriture par défaut, qui n'est pas standard, n'est pas $f^{(p)}$ car cette notation est traditionnellement utilisée pour indiquer la dérivée p\ieme{} d'une application.
 
 \begin{latexex}
@@ -42,7 +48,7 @@ Vous noterez que l'écriture par défaut, qui n'est pas standard, n'est pas $f^{
 
 \begin{remark}
 	La convention retenue est analogue à ce que l'on fait avec les puissances de nombres réels.
-	En particulier, $\multicompo{f}{1} = \multicompo[exp]{f}{1}$.
+	En particulier, $\multicompo{f}{1} = \multicompo[exp]{f}{1}$ et $\multicompo{f}{0} = \id_{\dom f}$ .
 \end{remark}
 
 

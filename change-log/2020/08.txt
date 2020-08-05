@@ -1,0 +1,19 @@
+==========
+2020-08-05
+==========
+
+**New minor version version::``0.3.0-beta`` of ¨tnssets:** see the new features below.
+
+
+**Explicit definition of a function:** the two macros below come from ¨tnsana.
+
+    1) A new macro ``\txtfuncdef`` can be used to print a short textual version.
+
+    1) Missing sets can be indicated via an empty argument with the macros ``\funcdef[h]`` and ``\txtfuncdef``.
+
+
+**Special functions :** three new macros added.
+
+    1) ``\id`` is to work with the identity function.
+
+    1) ``\caract`` and ``\caractone`` are to work with caracteristic function of a set.

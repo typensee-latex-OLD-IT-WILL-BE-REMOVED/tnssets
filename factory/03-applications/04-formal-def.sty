@@ -1,0 +1,80 @@
+% == PACKAGES USED == %
+
+
+% == DEFINITIONS == %
+
+% Argument #1: option s or sp
+% Argument #2: function
+% Argument #3: variable
+% Argument #4: formula
+% Argument #5: initial set
+% Argument #6: final set
+
+\newcommand\funcdef[6][u]{%
+    %
+    \IfEqCase{#1}{%
+        {u}{\let\callit\tnsana@func@def@usual}%
+        {s}{\let\callit\tnsana@func@def@no@vrule}%
+        {h}{\let\callit\tnsana@func@def@inline}%
+    }[%
+        \PackageError{tnsana}{unknown option}%
+                             {you can use u (default), s and h}%
+    ]%
+    %
+	\callit{#2}{#3}{#4}{#5}{#6}%
+}
+
+
+% Argument #1: function
+% Argument #2: variable
+% Argument #3: formula
+% Argument #4: initial set
+% Argument #5: final set
+
+\newcommand\tnsana@func@def@inline[5]{%
+	#1 : #2%
+	\if\relax\detokenize{#4}\relax\else%
+		\in #4%
+	\fi%
+	\mapsto #3%
+	\if\relax\detokenize{#5}\relax\else%
+		\in #5%
+	\fi%
+}
+
+\newcommand\txtfuncdef[5]{%
+	$#1(#2) = #3$%
+	\if\relax\detokenize{#4}\relax\else%
+		\ pour $#2 \in #4$%
+	\fi%
+	\if\relax\detokenize{#5}\relax\else%
+		\ \emph{(on sait que $#1(#2) \in #5$)}%
+	\fi%
+}
+
+
+% Argument #1: function
+%
+% Argument #2: function
+% Argument #3: variable
+% Argument #4: formula
+% Argument #5: initial set
+% Argument #6: final set
+
+\newcommand\tnsana@func@def@vertabstract[6]{%
+	\begin{array}[t]{l@#1@{\kern.5ex}r@{\kern.5ex}c@{\;}l}
+		#2 \colon & #5 & \rightarrow & #6 \\
+			      & #3 & \mapsto     & #4%
+	\end{array}
+}
+
+
+\newcommand\tnsana@func@def@usual[5]{%
+	\tnsana@func@def@vertabstract{{\kern.4ex}|}{#1}{#2}{#3}{#4}{#5}%
+}
+
+
+\newcommand\tnsana@func@def@no@vrule[5]{%
+	\tnsana@func@def@vertabstract{{\kern0ex}}{#1}{#2}{#3}{#4}{#5}%
+}
+
