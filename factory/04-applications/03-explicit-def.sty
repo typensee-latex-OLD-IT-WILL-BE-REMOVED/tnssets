@@ -45,36 +45,38 @@
 \newcommand\txtfuncdef[5]{%
 	$#1(#2) = #3$%
 	\if\relax\detokenize{#4}\relax\else%
-		\ pour $#2 \in #4$%
+		\space pour $#2 \in #4$%
 	\fi%
 	\if\relax\detokenize{#5}\relax\else%
-		\ \emph{(on sait que $#1(#2) \in #5$)}%
+		\space \emph{(on sait que $#1(#2) \in #5$%
+		\space est toujours vérifié)}%
 	\fi%
 }
 
 
-% Argument #1: function
+% Argument #1: separator after the colon
+% Argument #2: space after the separator
 %
-% Argument #2: function
-% Argument #3: variable
-% Argument #4: formula
-% Argument #5: initial set
-% Argument #6: final set
+% Argument #3: function
+% Argument #4: variable
+% Argument #5: formula
+% Argument #6: initial set
+% Argument #7: final set
 
-\newcommand\tnsana@func@def@vertabstract[6]{%
-	\begin{array}[t]{l@#1@{\kern.5ex}r@{\kern.5ex}c@{\;}l}
-		#2 \colon & #5 & \rightarrow & #6 \\
-			      & #3 & \mapsto     & #4%
+\newcommand\tnsana@func@def@vertabstract[7]{%
+	\begin{array}[t]{l@#1@{\kern#2}r@{\kern.5ex}c@{\;}l}
+		#3\kern.5ex\colon & #6 & \rightarrow & #7 \\
+			              & #4 & \mapsto     & #5%
 	\end{array}
 }
 
 
 \newcommand\tnsana@func@def@usual[5]{%
-	\tnsana@func@def@vertabstract{{\kern.4ex}|}{#1}{#2}{#3}{#4}{#5}%
+	\tnsana@func@def@vertabstract{{\kern.8ex}|}{.9ex}{#1}{#2}{#3}{#4}{#5}%
 }
 
 
 \newcommand\tnsana@func@def@no@vrule[5]{%
-	\tnsana@func@def@vertabstract{{\kern0ex}}{#1}{#2}{#3}{#4}{#5}%
+	\tnsana@func@def@vertabstract{{\kern0ex}}{.5ex}{#1}{#2}{#3}{#4}{#5}%
 }
 

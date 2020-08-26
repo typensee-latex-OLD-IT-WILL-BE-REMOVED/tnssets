@@ -4,7 +4,7 @@
 \makeatletter
     \input{../config/header[fr].sty}
 	
-    \usepackage{03-formal-def}
+    \usepackage{03-explicit-def}
 \makeatother
 
    
@@ -76,7 +76,11 @@ $\funcdef[h]{f}{x}{x^2}{}{}$
 \newparaexample{Écriture textuelle}
 
 On peut enfin obtenir une version \emph{\og textuelle \fg} via la macro \macro{txtfuncdef} où \prefix{txt} est pour \prefix{texte}.
-Cette macro  ne s'utilise pas en mode mathématique et elle accepte l'omission des ensembles.
+Cette macro ne s'utilise qu'en mode texte
+\footnote{
+	Logic ! Isn't it ?
+}
+et elle accepte l'omission de l'un ou des deux ensembles.
 
 \begin{latexex}
 \txtfuncdef{f}{x}{x^2}{I}{J}

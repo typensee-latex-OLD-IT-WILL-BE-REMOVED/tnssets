@@ -1,4 +1,15 @@
 ==========
+2020-08-10
+==========
+
+**Explicit definition of a function:** two little important changes.
+
+    1) The textual version has a more precise text for the values of the function.
+
+    1) The spacings in the math. versions have been improved.
+
+
+==========
 2020-08-09
 ==========
 
