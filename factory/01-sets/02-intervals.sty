@@ -1,12 +1,20 @@
 % == PACKAGES USED == %
 
 \RequirePackage{amsmath}
-\RequirePackage{stmaryrd}
 
 \RequirePackage{tnscom}
 
 
 % == DEFINITIONS == %
+
+% Cf. source code of stmaryrd.
+
+\DeclareSymbolFont{stmry}{U}{stmry}{m}{n}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{b}{n}
+
+\DeclareMathDelimiter\Zlbracket{\mathopen}{stmry}{"4A}{stmry}{"71}
+\DeclareMathDelimiter\Zrbracket{\mathopen}{stmry}{"4B}{stmry}{"79}
+
 
 % Macros for intervals - START
 
@@ -45,19 +53,19 @@
 % Macros for discrete intervals
 
 \newcommand\ZintervalCO{\@ifstar{\tnssets@ZintervalCO@star}{\tnssets@ZintervalCO@no@star}}
-\newcommand\tnssets@ZintervalCO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
-\newcommand\tnssets@ZintervalCO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+\newcommand\tnssets@ZintervalCO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\Zlbracket}{#1}{\tnsmathsep}{#2}{\Zlbracket}}}
+\newcommand\tnssets@ZintervalCO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\Zlbracket}{#1}{\tnsmathsep}{#2}{\Zlbracket}}}
 
 \newcommand\ZintervalC{\@ifstar{\tnssets@ZintervalC@star}{\tnssets@ZintervalC@no@star}}
-\newcommand\tnssets@ZintervalC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
-\newcommand\tnssets@ZintervalC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\llbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+\newcommand\tnssets@ZintervalC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\Zlbracket}{#1}{\tnsmathsep}{#2}{\Zrbracket}}}
+\newcommand\tnssets@ZintervalC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\Zlbracket}{#1}{\tnsmathsep}{#2}{\Zrbracket}}}
 
 \newcommand\ZintervalO{\@ifstar{\tnssets@ZintervalO@star}{\tnssets@ZintervalO@no@star}}
-\newcommand\tnssets@ZintervalO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
-\newcommand\tnssets@ZintervalO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\llbracket}}}
+\newcommand\tnssets@ZintervalO@no@star[2]{\ensuremath{\tns@generic@interval@ext{\Zrbracket}{#1}{\tnsmathsep}{#2}{\Zlbracket}}}
+\newcommand\tnssets@ZintervalO@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\Zrbracket}{#1}{\tnsmathsep}{#2}{\Zlbracket}}}
 
 \newcommand\ZintervalOC{\@ifstar{\tnssets@ZintervalOC@star}{\tnssets@ZintervalOC@no@star}}
-\newcommand\tnssets@ZintervalOC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
-\newcommand\tnssets@ZintervalOC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\rrbracket}{#1}{\tnsmathsep}{#2}{\rrbracket}}}
+\newcommand\tnssets@ZintervalOC@no@star[2]{\ensuremath{\tns@generic@interval@ext{\Zrbracket}{#1}{\tnsmathsep}{#2}{\Zrbracket}}}
+\newcommand\tnssets@ZintervalOC@star[2]{\ensuremath{\tns@generic@interval@semi@ext{\Zrbracket}{#1}{\tnsmathsep}{#2}{\Zrbracket}}}
 
 % Macros for intervals - END

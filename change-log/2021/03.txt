@@ -1,0 +1,7 @@
+==========
+2021-03-02
+==========
+
+**New minor version version::``0.4.0-beta`` of ¨tnssets:** starting to minimize the use of several fonts such as to avoid the error ``"Too many math alphabets"``.
+
+**Two new symbols ``\Zlbracket`` and ``\Zrbracket``:** the two symbols ``\llbracket`` and ``\rrbracket`` are imported, and only this ones, from the font ``stmaryrd``. They have been renamed ``\Zlbracket`` and ``\Zrbracket``.

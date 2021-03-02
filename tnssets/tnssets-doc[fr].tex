@@ -33,6 +33,7 @@
 
 \usepackage{enumitem}
 \usepackage{multicol}
+\usepackage{longtable}
 \usepackage{makecell}
 
 \setlength{\parindent}{0cm}
@@ -88,6 +89,7 @@
 \usepackage{ifplatform}
 \usepackage{ifthen}
 \usepackage{macroenvsign}
+\usepackage{pgffor}
 
 
 
@@ -290,10 +292,10 @@
 	théorie générale des ensembles\\%
 	et des applications\\%
 	{\footnotesize Code source disponible sur \url{https://github.com/typensee-latex/tnssets.git}.}\\%
-{\footnotesize Version \texttt{0.3.0-beta} développée et testée sur \macosxname{}.}%
+{\footnotesize Version \texttt{0.4.0-beta} développée et testée sur \macosxname{}.}%
 }
 \author{Christophe BAL}
-\date{2020-08-05}
+\date{2021-03-02}
 
 \maketitle
 
@@ -323,7 +325,7 @@ Le package \verb+tnssets+ propose des macros utiles pour la rédaction de texte 
 % List of packages - START
 \section{Packages utilisés}
 
-La roue ayant déjà été inventée, le package \verb#tnssets# réutilise les packages suivants sans aucun scrupule.
+La roue ayant déjà été inventée, le package \verb#tnssets# utilise les packages suivants sans aucun scrupule.
 
 \begin{multicols}{4}
     \begin{itemize}
@@ -334,9 +336,7 @@ La roue ayant déjà été inventée, le package \verb#tnssets# réutilise les p
         \item \verb#mathtools#
         \item \verb#relsize#
         \item \verb#stackengine#
-        \item \verb#stmaryrd#
         \item \verb#xstring#
-        \item \verb#yhmath#
     \end{itemize}
 \end{multicols}
 % List of packages - END
@@ -596,7 +596,11 @@ $\intervalP{a}{b} = \intervalO{a}{b}$.
 \subsection{Intervalles discrets d'entiers}
 
 
-Dans l'exemple suivant la syntaxe fait référence à $\ZZ$ l'ensemble des entiers relatifs.
+Dans l'exemple suivant la syntaxe fait référence à $\ZZ$ l'ensemble des entiers relatifs
+(les crochets doubles $\Zlbracket$ et $\Zrbracket$ sont accessibles via \verb#\Zlbracket# et \verb#\Zrbracket# directement
+\footnote{
+	Ces deux symboles \og proviennent \fg{} du code source du package \texttt{stmaryrd}, lequel package n'est pas chargé.
+}).
 
 \begin{latexex}
  $\ZintervalC{-1}{4} =
@@ -684,7 +688,7 @@ $\displaystyle%
 
 \begin{latexex}
 $\id_A$ vérifie par définition
-$\forall x \in A$, $\id(x) = x$.
+$\forall x \in A$, $\id_A(x) = x$.
 \end{latexex}
 
 
@@ -924,6 +928,20 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 \begin{description}
 % Changes shown - START
+
+    \medskip
+    \item[2021-03-02] Nouvelle version mineure \verb+0.4.0-beta+.
+    
+    \begin{itemize}[itemsep=.5em]
+        \item \topic*{Crochets doubles}
+              ajout des symboles \macro{Zlbracket} et \macro{Zrbracket} 
+              \footnote{
+              	En coulisse, on commence à tenter de gérer plus proprement les symboles particuliers utilisés.
+    		  }.
+    \end{itemize}
+    
+    \separation
+% ------------------------ %
 
     \medskip
     \item[2020-08-05] Nouvelle version mineure \verb+0.3.0-beta+.

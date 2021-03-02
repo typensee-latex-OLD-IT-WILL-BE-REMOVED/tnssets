@@ -9,5 +9,5 @@ american-real::
 
 discrete::
     prefix = Z
-    [...]  = \llbracket ... \rrbracket
-    ]...[  = \rrbracket ... \llbracket
+    [...]  = \Zlbracket ... \Zrbracket
+    ]...[  = \Zrbracket ... \Zlbracket
